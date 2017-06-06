@@ -1,3 +1,5 @@
+/* Write a function, longestCommonSubstr(str1, str2) that takes two strings and returns the longest common substring. A substring is defined as any consecutive slice of letters from another string. */
+
 function longestCommonSubstr(str1, str2){
 	// create empty string variable to hold the longest string
 	var longestSubstr = "";
@@ -27,8 +29,8 @@ function longestCommonSubstr(str1, str2){
 	// return string
 	return longestSubstr;
 }
-longestCommonSubstr("abc", "ab");
-longestCommonSubstr("xab", "ab");
+longestCommonSubstr("abc", "ab"); // --> "ab"
+longestCommonSubstr("xab", "ab"); // --> "ab"
 
 // WITHOUT COMMNENTS TO READ EASIER
 function longestCommonSubstr(str1, str2){
@@ -50,3 +52,73 @@ function longestCommonSubstr(str1, str2){
 	}
 	return longestSubstr;
 }
+
+
+
+
+
+/* Write a function called sumOfNums that takes an array of integers and returns their sum. Use recursion. */
+function sumOfNums(array){
+	var result = 0;
+	for(var i = 0; i < array.length; i++){
+		result += array[i];
+	}
+	return result;
+}
+
+function sumOfNums(array){
+	var result = 0;
+	function helper(idx){
+		if(idx === array.length){
+			return;
+		} else {
+			result += array[idx];
+			helper(idx + 1);
+		}
+	}
+	helper(0);
+	return result;
+}
+
+function sumOfNums(array){
+	var result = 0;
+	function helper(idx){
+		if(idx < 0){
+			return;
+		} else {
+			result += array[idx];
+			helper(idx - 1);
+		}
+	}
+	helper(array.length - 1);
+	return result;
+}
+
+function sumOfNums(array){
+	if(array.length === 1){
+		return array[0];
+	}
+	return array[0] + sumOfNums(array.slice(1, array.length));
+}
+sumOfNums([1,2,3]);
+1 + sumOfNums([2, 3]);
+1 + 2 + sumOfNums([3]);
+1 + 2 + 3
+1 + 5
+6
+
+function sumOfNums(array){
+	if(array.length === 1){
+		return array[0];
+	}
+	return array.pop() + sumOfNums(array);
+}
+sumOfNums([1,2,3]);
+3 + sumOfNums([1, 2]);
+3 + 2 + sumOfNums([1]);
+3 + 2 + 1
+3 + 3
+6
+
+
+
