@@ -122,3 +122,33 @@ sumOfNums([1,2,3]);
 
 
 
+
+
+/* Write a method called digitalRoot that takes in a number. It should sum the digits of a positive integer. If it is greater than or equal to 10, sum the digits of the resulting number. Keep repeating until there is only one digit in the result, called the "digital root". Do not use string conversion within your method. */
+input = 11
+output = 2
+input = 13
+output = 4
+
+// parseInt because it returns the number rounded down
+// 13 % 10 = 3
+// 13 / 10 = 1.3 --> use parseInt
+// add these numbers together
+// can check as long as num is greater than 0 and keep adding to your count
+// OR recursively check base case if num < 10, return then add the result of modulo plus calling the function again with the new number
+
+function digitalRoot(num){
+	var count = 0;
+	while(num > 0){
+		count += parseInt(num % 10);
+		num = parseInt(num / 10);
+	}
+	return count;
+}
+
+function digitalRoot(num){
+	if(num < 10){
+		return num;
+	}
+	return parseInt(num % 10) + digitalRoot(parseInt(num / 10));
+}
