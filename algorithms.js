@@ -216,17 +216,38 @@ true
 false
 
 */
+function isPalindrome(string){
+	var splitStr = string.split(""), reverse = "";
+	for(var i = splitStr.length - 1; i >= 0; i--){
+		reverse += splitStr[i];
+	}
+	var isPal = (reverse === string) ? true : false;
+	return isPal;
+}
+
 function isPalindrome(str){
-	function helper(first, last, string){
-		if(last <= first){
-			if(string.join("") === str){
-				return true;
-			} else {
-				return false;
-			}
+	var result = "";
+	function helper(index){
+		if(index < 0){
+			return;
 		} else {
-			reversedStr = swap(first, last, string);
-			return helper(first + 1, last - 1, string);
+			result += str[index];
+			helper(index - 1);
+		}
+	}
+	helper(str.length - 1);
+	var isPal = (result === str) ? true : false;
+	return isPal;
+}
+
+function isPalindrome(str){
+	function helper(firstIdx, lastIdx, string){
+		if(lastIdx <= firstIdx){
+			var isPal = (string.join("") === str) ? true : false;
+			return isPal;
+		} else {
+			swap(firstIdx, lastIdx, string);
+			return helper(firstIdx + 1, lastIdx - 1, string);
 		}
 	}
 
@@ -237,8 +258,7 @@ function isPalindrome(str){
 	}
 	return helper(0, str.length - 1, str.split(""));
 }
-isPalindrome("racecar");
-
+isPalindrome("racecar")
 
 
 
