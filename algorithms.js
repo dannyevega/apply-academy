@@ -152,3 +152,63 @@ function digitalRoot(num){
 	}
 	return parseInt(num % 10) + digitalRoot(parseInt(num / 10));
 }
+
+
+
+
+
+/* Write a function, fibs(num) which returns the first n elements from the fibonnacci sequence, given n. */
+
+0,1,1,2,3,5,8,13
+0 1 2 3 4 5 6 7
+
+function fibs(num){
+	var fibonacci = [0, 1];
+	if(num === 0){
+		return [];
+	}
+	function helper(idx){
+		if(idx > num){
+			return;
+		} else {
+			fibonacci[idx] = fibonacci[idx - 2] + fibonacci[idx - 1];
+			helper(idx + 1);
+		}
+	}
+	helper(2);
+	fibonacci.splice(fibonacci.length - 1);
+	return fibonacci;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
