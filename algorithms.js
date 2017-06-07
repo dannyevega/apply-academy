@@ -205,7 +205,39 @@ function fibs(num){
 
 
 
+/* Write a JavaScript function that takes a string and returns true if it's a palindrome, false if it's not.
 
+Sample Input:
+isPalindrome("racecar");
+isPalindrome("desire")
+
+Sample Output:
+true
+false
+
+*/
+function isPalindrome(str){
+	function helper(first, last, string){
+		if(last <= first){
+			if(string.join("") === str){
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			reversedStr = swap(first, last, string);
+			return helper(first + 1, last - 1, string);
+		}
+	}
+
+	function swap(a, b, string){
+		var temp = string[a];
+		string[a] = string[b];
+		string[b] = temp;
+	}
+	return helper(0, str.length - 1, str.split(""));
+}
+isPalindrome("racecar");
 
 
 
