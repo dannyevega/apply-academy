@@ -157,10 +157,31 @@ function digitalRoot(num){
 
 
 
-/* Write a function, fibs(num) which returns the first n elements from the fibonnacci sequence, given n. */
+/* Write a function, fibs(num) which returns the first n elements from the fibonnacci sequence, given n.
+
+Basically, pass in a value and return all of the elements up to but not including that value.
+
+Sample Input:
+fibs(5)
+
+Sample Output:
+[0,1,1,2,3]
+*/
 
 0,1,1,2,3,5,8,13
 0 1 2 3 4 5 6 7
+
+function fibs(num){
+	var fibonacci = [0, 1];
+	if(num === 0) return [];
+	if(num === 1) return [0];
+
+	while(fibonacci.length < num){
+		fibonacci.push(fibonacci[fibonacci.length - 2] + fibonacci[fibonacci.length - 1]);
+	}
+
+	return fibonacci;
+}
 
 function fibs(num){
 	var fibonacci = [0, 1];
