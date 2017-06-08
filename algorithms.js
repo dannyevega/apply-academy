@@ -221,8 +221,7 @@ function isPalindrome(string){
 	for(var i = splitStr.length - 1; i >= 0; i--){
 		reverse += splitStr[i];
 	}
-	var isPal = (reverse === string) ? true : false;
-	return isPal;
+	return (reverse === string) ? true : false;
 }
 
 function isPalindrome(str){
@@ -236,15 +235,13 @@ function isPalindrome(str){
 		}
 	}
 	helper(str.length - 1);
-	var isPal = (result === str) ? true : false;
-	return isPal;
+	return (result === str) ? true : false;
 }
 
 function isPalindrome(str){
 	function helper(firstIdx, lastIdx, string){
 		if(lastIdx <= firstIdx){
-			var isPal = (string.join("") === str) ? true : false;
-			return isPal;
+			return (string.join("") === str) ? true : false;
 		} else {
 			swap(firstIdx, lastIdx, string);
 			return helper(firstIdx + 1, lastIdx - 1, string);
@@ -264,18 +261,21 @@ isPalindrome("racecar")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+function uniqueSub(str){
+	var length = str.length, result = [], map = {}, uniqueSubs = [];
+	for(var i = 0; i < length; i++){
+		for(var j = i + 1; j <= length; j++){
+			result.push(str.substr(i, j));
+		}
+	}
+	for(var i = 0; i < result.length; i++){
+		map[result[i]] = undefined;
+	}
+	for(var k in map){
+		uniqueSubs.push(k);
+	}
+	return uniqueSubs;
+}
 
 
 
