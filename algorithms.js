@@ -261,21 +261,143 @@ isPalindrome("racecar")
 
 
 
-function uniqueSub(str){
-	var length = str.length, result = [], map = {}, uniqueSubs = [];
-	for(var i = 0; i < length; i++){
-		for(var j = i + 1; j <= length; j++){
-			result.push(str.substr(i, j));
+/* Write a method that finds all the unique substrings for a word.
+
+Sample input:
+"aab"
+
+Sample output:
+["a", "aa", "aab", "ab", "b"]
+*/
+function uniqueSubs(str){
+	// create empty array result to store all substrings of the string passed in
+	// create empty uniqueSubs array to store all unique substrings as there will likely be duplicates
+	// empty map to store unique properties
+	var result = [], uniqueSubs = [], map = {};
+	// iterate through the string starting at index 0 for the outer loop and add 1 to the index in the inner loop
+	// this is so you'll be able to slice the string from the index and 1 over each time i.e. "a" --> "aa" --> "aab" & so on
+	for(var i = 0; i < str.length; i++){
+		for(var j = i + 1; j <= str.length; j++){
+			result.push(str.slice(i, j));
+		}
+	}
+	// now we have all the substrings in the results array but they are not unique ["a", "aa", "aab", "a", "ab", "b"]
+	// since we have duplicates, we set each substring as a key with the value of true (value is arbitrary, just need a place holder) because pushing to a map will not push duplicates therefore we know each key in the map is unique
+	for(var i = 0; i < result.length; i++){
+		map[result[i]] = true;
+	}
+	// iterate through the map and push each key into the uniqueSubs array
+	for(var k in map){
+		uniqueSubs.push(k);
+	}
+	// return uniqueSubs array
+	return uniqueSubs;
+}
+uniqueSubs("aab");
+
+/* without comments */
+function uniqueSubs(str){
+	var result = [], uniqueSubs = [], map = {};
+	for(var i = 0; i < str.length; i++){
+		for(var j = i + 1; j <= str.length; j++){
+			result.push(str.slice(i, j));
 		}
 	}
 	for(var i = 0; i < result.length; i++){
-		map[result[i]] = undefined;
+		map[result[i]] = true;
 	}
 	for(var k in map){
 		uniqueSubs.push(k);
 	}
 	return uniqueSubs;
 }
+uniqueSubs("aab");
+
+// since "a" is not unique, thats why we pass the character into the map so it will store the character as a key with its value -- pushing duplicates into a map will not store it twice so we know each key is unique
+i = 0
+j = 1 "a"
+
+i = 0
+j = 2 "aa"
+
+i = 0
+j = 3 "aab"
+
+i = 1
+j = 2 "a"
+
+i = 1
+j = 3 "ab"
+
+i = 2
+j = 3 "b"
+
+
+
+
+
+/*
+
+If a word starts with a vowel ('a', 'e', 'i', 'o', 'u', or 'y'), just append "way" to the end of the word.
+
+If a word starts with a consonant (a letter that's not a vowel), move all consonants leading up to the first vowel to the end of the word and add an "ay" at the very end
+
+Given a word, translate it into Pig Latin.
+
+Sample input:
+"lit"
+"apple"
+
+Sample output:
+"itlay"
+"appleway"
+
+*/
+function pigLatin(word){
+	var result = "";
+	// regex to check for vowels
+	var regex = /[aeiouy]/gi;
+	// check if first letter in word is vowel -- if it is, return word as is and add 'way' at end
+	if(word[0].match(regex)){
+		result = word + "way";
+	} else {
+		// match returns an array with all of the matches found using the regex passed in
+		// we pass [0] to get the first vowel in the array
+		// then pass that vowel into the indexOf function to find where it is located in the string -- save as firstVowel variable
+		var firstVowel = word.indexOf(word.match(regex)[0]);
+		// use substr to cut the string from the first vowel to end of the strings length
+		// add all the consonants before the firstVowel using substr from 0 index up until the firstVowel
+		// add 'ay' at the end
+		result = word.substr(firstVowel) + word.substr(0, firstVowel) + "ay";
+	}
+	// return the result
+	return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
