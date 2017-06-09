@@ -379,12 +379,17 @@ function pigLatin(word){
 
 
 function sumMatrix(matrix, left, right){
+	// sum variable to hold result
 	var sum = 0;
+	// outer loop will be traversing through all of the arrays -- in example below, the first 2 array from position 0 to 1 --> [0,0] & [1,0]
 	for(var i = left[0]; i <= right[0]; i++){
+		// inner loop will iterate from the first element in each inner array through the end of each respective array -- 
 		for(var j = left[0]; j <= right[1]; j++){
+			// grab each value and you iterate through and add to the sum;
 			sum += matrix[i][j];
     	}
     }
+    // return the sum
 	return sum;
 }
 
