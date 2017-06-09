@@ -378,19 +378,17 @@ function pigLatin(word){
 
 
 
+function sumMatrix(matrix, left, right){
+	var sum = 0;
+	for(var i = left[0]; i <= right[0]; i++){
+		for(var j = left[0]; j <= right[1]; j++){
+			sum += matrix[i][j];
+    	}
+    }
+	return sum;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+matrix([[0,0], [1,0], [2,1]], [0,0], [1,1]);
 
 
 
