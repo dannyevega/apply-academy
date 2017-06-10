@@ -393,6 +393,35 @@ matrixSum([[0,1,2], [2,1,3], [2,3,1], [0,0], [1,2]]);
 
 
 
+function caesarCipher(string, shift){
+	// empty variable to hold result
+	var result = "";
+	// put all letters of alphabet into array to check the indices of the string passed in
+	var letters = "abcdefghijklmnopqrstuvwxyz".split("");
+
+	// iterate through the length of the string
+	for(var i = 0; i < string.length; i++){
+		// get each current letter in the string
+		var char = string[i];
+		// check if current element is a space -- push to result if it is
+		if(char === " "){
+			result += " ";
+		} else {
+			// its not an empty space -- get index of each character i.e. "d" --> 3
+			var index = letters.indexOf(char);
+			// create new letter to push in -- old index + amount to shift over i.e. letters[3 + 2] === letters[5] --> "f"
+			// we modulo by amount of letters in alphabet, 26 to account for letters at end of alphabet i.e. "y" shift over 2 should be "a"
+			// without modulo, would return undefined because letters[24 + 2] === letters[26] which does not exist
+			var newLetter = letters[(index + shift) % 26];
+			// push newLetter to result
+			result += newLetter;
+		}
+	}
+	// return result
+	return result;
+}
+
+
 
 
 
