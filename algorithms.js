@@ -378,16 +378,16 @@ function pigLatin(word){
 
 
 
-function matrixSum(matrix, leftCoords, rightCoords){
+function matrixSum(matrix, left, right){
 	var sum = 0;
-	for(var i = leftCoords[0]; i <= rightCoords[0]; i++){
-		for(var j = 0; j < matrix[leftCoords[0]].length; j++){
+	for(var i = left[0]; i <= right[0]; i++){
+		for(var j = 0 + left[1]; j < matrix[left[0]].length; j++){
 			sum += matrix[i][j];
-		}
+	    }
 	}
 	return sum;
 }
-matrixSum([[0,1,2], [2,1,3], [2,3,1], [0,0], [1,2]]);
+matrixSum([[0,1,2], [2,1,3], [2,3,1]], [0,0], [1,2]);
 
 
 
