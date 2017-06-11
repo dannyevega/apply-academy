@@ -378,16 +378,75 @@ function pigLatin(word){
 
 
 
+// add all values in a given rectangle in a matrix passed by the coordinates left and right
+/*
+
+input:
+left = [1,0]
+right = [2,2]
+0 1 2
+2 1 3
+2 3 1
+
+output:
+12
+2 + 1 + 3 + 2 + 3 + 1 = 12
+
+*/
+
 function matrixSum(matrix, left, right){
+	// empty sum variable to keep count
 	var sum = 0;
+	// x coords in left and right coordinates tell you how much to loop i.e. left = [1,1] right = [2,2] -- > 0 and 2 is range to loop thru
 	for(var i = left[0]; i <= right[0]; i++){
-		for(var j = 0 + left[1]; j < matrix[left[0]].length; j++){
+		// you're always in the array you want to check because i = left[0] === 1 --> matrix[1] === [2,1,3]
+		// inner loop tells you what index to start counting from within inner array
+		// make sure to set j = 0 + left[1] which whill tell you the position to start from i.e. matrix[i][j] === matrix[1][1] --> 1
+		// since we have the position, we know where to start and add thru the length of the array
+		for(var j = 0 + left[1]; j < matrix[i].length; j++){
 			sum += matrix[i][j];
-	    }
+		}
 	}
+	// return sum
 	return sum;
 }
-matrixSum([[0,1,2], [2,1,3], [2,3,1]], [0,0], [1,2]);
+matrixSum([[0,1,2], [2,1,3], [2,3,1]], [1,1], [2,2]);
+
+
+
+
+
+/*
+add all diagonal values in a given matrix
+
+input:
+left = [0,0]
+right = [2,2]
+3 1 2
+2 2 3
+2 3 1
+
+output:
+6
+3 + 2 + 1 = 12
+
+*/
+
+function diagonalMatrix(matrix, left, right){
+	// empty sum variable to keep count
+	var sum = 0;
+	// x coords in left and right coordinates tell you how much to loop i.e. left = [0,0] right = [2,2] -- > 0 and 2 is range to loop thru
+	for(var i = left[0]; i <= right[0]; i++){
+		// i holds the position of the array and index you want to grab
+		// matrix[0][0] --> 5
+		// matrix[1][1] --> 4
+		// matrix[2][2] --> 3
+		sum += matrix[i][i];
+	}
+	// return the sum
+	return sum;
+}
+diagonalMatrix([[5,1,2], [2,4,3], [2,5,3]], [1,1], [2,2]);
 
 
 
@@ -420,8 +479,6 @@ function caesarCipher(string, shift){
 	// return result
 	return result;
 }
-
-
 
 
 
