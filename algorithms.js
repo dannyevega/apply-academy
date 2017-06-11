@@ -514,7 +514,7 @@ function caesarCipher(string, shift){
 
 
 function validIP(string){
-	var periods = 0, valid = 0;
+	var periods = 0, split, isValid;
 	for(var i = 0; i < string.length; i++){
 		if(string[i] === "."){
 			periods += 1;
@@ -523,36 +523,16 @@ function validIP(string){
 	if(!periods === 3){
 		return false;
 	} else {
-		var split = string.split("."), nums = [];
-		split.map(function(el){
-			nums.push(parseInt(el));
+		split = string.split(".");
+		split = split.map(function(el){
+			return parseInt(el);
 		});
-		for(var i = 0; i < nums.length; i++){
-			if(nums[i] >= 0 && nums[i] <= 255){
-				valid += 1;
-			}
-		}
-		return (valid === 4) ? true : false;
+		isValid = split.filter(function(num){
+			return num >= 0 && num <= 255;
+		});
+		return (isValid.length === 4) ? true : false;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
