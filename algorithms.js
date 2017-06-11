@@ -379,6 +379,8 @@ function pigLatin(word){
 
 
 // add all values in a given rectangle in a matrix passed by the coordinates left and right
+// only adds elements if they are its the entire inner array -- cant pass other coordinates to get rectangles skipping any elements
+// you wouldnt be able to do left = [1,0], right = [2,1] to get 8
 /*
 
 input:
@@ -447,6 +449,33 @@ function diagonalMatrix(matrix, left, right){
 	return sum;
 }
 diagonalMatrix([[5,1,2], [2,4,3], [2,5,3]], [1,1], [2,2]);
+
+
+
+
+
+/* this matrix will return sum of all values for any indices you pass in
+
+input: [1,2], [2,3]
+[0,1,2,1]
+[2,2,1,3]
+[2,4,3,1]
+
+output:
+8
+1 + 3 + 3 + 1 = 8
+
+*/
+
+function anyMatrixSum(matrix, left, right){
+	var sum = 0;
+	for(var i = left[0]; i <= right[0]; i++){
+		for(var j = 0 + left[1]; j <= right[1]; j++){
+			sum += matrix[i][j];
+		}
+	}
+	return sum;
+}
 
 
 
