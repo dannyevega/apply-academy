@@ -606,6 +606,20 @@ function mergeSortedArrays(arr1, arr2){
 }
 mergeSortedArrays([1,3,5,7], [2,4]);
 
+function mergeSorted(arr1, arr2){
+	var result = [], first = 0, second = 0;
+	while(first < arr1.length || second < arr2.length){
+		if(arr1[first] < arr2[second] || second >= arr2.length){
+			result.push(arr1[first]);
+			first++;
+		} else {
+			result.push(arr2[second]);
+			second++;
+		}
+	}
+	return result;
+}
+
 
 
 
@@ -621,6 +635,19 @@ input: array = [4,2,9,10], target = 23
 output: -1
 
 */
+
+// NAIVE SOLUTIONS
+function twoSum(nums, target){
+	for(var i = 0; i < nums.length; i++){
+		for(var j = i + 1; j < nums.length; j++){
+			if(nums[i] + nums[j] === target){
+				return [i, j];
+			}
+		}
+	}
+	return -1;
+}
+
 function twoSum(nums, target){
 	for(var i = 0; i < nums.length; i++){
 		difference = target - nums[i];
@@ -632,4 +659,83 @@ function twoSum(nums, target){
 	}
 	return -1;
 }
+twoSum([4,2,9,10], 11);
+
+
+// Using a hash to make matching more efficient
+function twoSum(nums, target){
+	var map = {}, current;
+	for(var i = 0; i < nums.length; i++){
+		current = nums[i];
+		if(map[current]){
+			return true;
+		}
+		map[target - current] = true;
+	}
+	return false;
+}
+twoSum([2,4,9,10], 11);
+
+function twoSum(nums, target){
+	var map = {}, current;
+	for(var i = 0; i < nums.length; i++){
+		current = nums[i];
+		if(map[current] === undefined){
+			map[current] = i;
+		}
+		if(map[target - current] || map[target - current] === 0){
+			return [map[target - current], i]
+		}
+	}
+	return -1;
+}
+twoSum([2,4,9,10], 11);
+
+function twoSum(array, target){
+	var map = {}, current;
+	for(var i = 0; i < array.length; i++){
+		if(!map[array[i]]){
+			map[array[i]] = i;
+		}
+	}
+	for(var i = 0; i < array.length; i++){
+		if(map[target - array[i]]){
+			return [ i, map[target - array[i]] ];
+		}
+	}
+	return -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
