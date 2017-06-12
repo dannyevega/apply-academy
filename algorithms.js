@@ -583,12 +583,27 @@ function mergeTwoArrays(array1, array2){
 	}
 	return helper(0, 0);
 }
+mergeTwoArrays([1, 5, 7], [2, 3, 6]);
 
-
-
-
-
-
-
+function mergeSortedArrays(arr1, arr2){
+	// create variables -- first to keep track of index in first array, second to keep track of index in second array & result to hold new array
+	var first = 0, second = 0, result = [];
+	// iterate while these conditions are met
+	// first condition -- checks to see if both counters are less than their respective array length
+	// second condition -- what if there are no more elements in 2nd array? as long as first is < arr1.length, we continue
+	// third condition -- what if there are no more elements in 1st array? as long as second is < arr2.length, we continue
+	while((first < arr1.length && second < arr2.length) || first < arr1.length || second < arr2.length){
+		// in the case there are no more elements in the second array, we continue to push because there are no longer two arrays to compare
+		if(second >= arr2.length || arr1[first] < arr2[second]){
+			result.push(arr1[first]);
+			first++;
+		} else {
+			result.push(arr2[second]);
+			second++;
+		}
+	}
+	return result;
+}
+mergeSortedArrays([1,3,5,7], [2,4]);
 
 
