@@ -536,3 +536,59 @@ function validIP(string){
 
 
 
+
+
+/*
+merge two sorted arrays into one sorted array
+
+input: [1, 5, 7], [2, 3, 6]
+output: [1,2,3,5,7];
+
+*/
+function mergeTwoArrays(array1, array2){
+	var result = [];
+	function helper(firstIndex, secondIndex){
+		// base case -- if BOTH indices are bigger than the length of its array, we know to return
+		if(firstIndex > array1.length && secondIndex > array2.length){
+			return result;
+		} else {
+			// check to see if both elements exist
+			if(array1[firstIndex] && array2[secondIndex]){
+				// if element in first array is less than element in second array at same position, push into result -- increment firstIndex and call helper function again
+				if(array1[firstIndex] < array2[secondIndex]){
+					result.push(array1[firstIndex]);
+					firstIndex++;
+					return helper(firstIndex, secondIndex);
+				} else {
+					// else the element in second array in same position is bigger, push into result
+					result.push(array2[secondIndex]);
+					secondIndex++;
+					return helper(firstIndex, secondIndex);
+				}
+			}
+			// at end, were not going to have two elements to compare because only 1 element will be left over
+			// 1 & 2 --> push in 1
+			// 5 & 2 --> push in 2
+			// 5 & 3 --> push in 3
+			// 5 & 6 --> push in 5
+			// 7 & 6 --> push in 6
+			// only one element, 7, is left over in array1 so we add all elements from that index over to the result array
+			if(array1[firstIndex]){
+				return result.concat(array1.splice(firstIndex));
+			}
+			if(array2[secondIndex]){
+				return result.concat(array2.splice(secondIndex));
+			}
+		}
+	}
+	return helper(0, 0);
+}
+
+
+
+
+
+
+
+
+
