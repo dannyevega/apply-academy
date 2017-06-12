@@ -607,3 +607,29 @@ function mergeSortedArrays(arr1, arr2){
 mergeSortedArrays([1,3,5,7], [2,4]);
 
 
+
+
+
+/*
+given an array of numbers, return the indices where the values add up to the target
+return -1 if there is no match
+
+input: array = [4,2,6,5,9,10], target = 13
+output: [0, 4];
+
+input: array = [4,2,9,10], target = 23
+output: -1
+
+*/
+function twoSum(nums, target){
+	for(var i = 0; i < nums.length; i++){
+		difference = target - nums[i];
+		for(var j = i + 1; j < nums.length; j++){
+			if(nums[j] === difference){
+				return [i, j];
+			}
+		}
+	}
+	return -1;
+}
+
