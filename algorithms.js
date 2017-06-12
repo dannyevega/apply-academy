@@ -677,12 +677,18 @@ function twoSum(nums, target){
 twoSum([2,4,9,10], 11);
 
 function twoSum(nums, target){
+	// set empty hash to hold out elements along with their indices
 	var map = {}, current;
 	for(var i = 0; i < nums.length; i++){
+		// set the current value equal to current
 		current = nums[i];
-		if(map[current] === undefined){
+		// if current is not inside the map, set the value equal to its index i.e. map = { 2: 0 }
+		if(!map[current]){
 			map[current] = i;
 		}
+		// now check if weve found the current values difference at some point
+		// since we are evaluting for truthy values, well need to check if the value exists in the map OR if the value is equal to 0
+		// for example, map[2] = 0 but 0 is a falsy number. running 'if(map[2])' wont return anything because 0 is not true
 		if(map[target - current] || map[target - current] === 0){
 			return [map[target - current], i]
 		}
@@ -705,6 +711,9 @@ function twoSum(array, target){
 	}
 	return -1;
 }
+
+
+
 
 
 
