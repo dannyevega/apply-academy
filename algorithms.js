@@ -716,15 +716,25 @@ function twoSum(array, target){
 
 
 
+/*
+given an array of bits, return them in order
+input: [0, 1, 1, 0, 1, 1, 1, 0]
+output: [0, 0, 0, 1, 1, 1, 1, 1]
 
+*/
 
-
-
-
-
-
-
-
+function sortBits(array){
+	var zeros = [], ones = [], current;
+	for(var i = 0; i < array.length; i++){
+		current = array[i];
+		if(current === 0){
+			zeros.push(current);
+		} else if(current === 1){
+			ones.push(current);
+		}
+	}
+	return zeros.concat(ones);
+}
 
 
 
