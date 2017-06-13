@@ -136,7 +136,6 @@ output = 4
 // add these numbers together
 // can check as long as num is greater than 0 and keep adding to your count
 // OR recursively check base case if num < 10, return then add the result of modulo plus calling the function again with the new number
-
 function digitalRoot(num){
 	var count = 0;
 	while(num > 0){
@@ -165,9 +164,7 @@ Sample Input:
 fibs(5)
 
 Sample Output:
-[0,1,1,2,3]
-*/
-
+[0,1,1,2,3] */
 0,1,1,2,3,5,8,13
 0 1 2 3 4 5 6 7
 
@@ -213,9 +210,7 @@ isPalindrome("desire")
 
 Sample Output:
 true
-false
-
-*/
+false */
 function isPalindrome(string){
 	var splitStr = string.split(""), reverse = "";
 	for(var i = splitStr.length - 1; i >= 0; i--){
@@ -267,8 +262,7 @@ Sample input:
 "aab"
 
 Sample output:
-["a", "aa", "aab", "ab", "b"]
-*/
+["a", "aa", "aab", "ab", "b"] */
 function uniqueSubs(str){
 	// create empty array result to store all substrings of the string passed in
 	// create empty uniqueSubs array to store all unique substrings as there will likely be duplicates
@@ -336,9 +330,7 @@ j = 3 "b"
 
 
 
-/*
-
-If a word starts with a vowel ('a', 'e', 'i', 'o', 'u', or 'y'), just append "way" to the end of the word.
+/* If a word starts with a vowel ('a', 'e', 'i', 'o', 'u', or 'y'), just append "way" to the end of the word.
 
 If a word starts with a consonant (a letter that's not a vowel), move all consonants leading up to the first vowel to the end of the word and add an "ay" at the very end
 
@@ -350,9 +342,7 @@ Sample input:
 
 Sample output:
 "itlay"
-"appleway"
-
-*/
+"appleway" */
 function pigLatin(word){
 	var result = "";
 	// regex to check for vowels
@@ -378,10 +368,10 @@ function pigLatin(word){
 
 
 
-// add all values in a given rectangle in a matrix passed by the coordinates left and right
-// only adds elements if they are its the entire inner array -- cant pass other coordinates to get rectangles skipping any elements
-// you wouldnt be able to do left = [1,0], right = [2,1] to get 8
-/*
+/* add all values in a given rectangle in a matrix passed by the coordinates left and right
+only adds elements if they are its the entire inner array -- cant pass other coordinates to get rectangles skipping any elements
+you wouldnt be able to do left = [1,0], right = [2,1] to get 8
+
 
 input:
 left = [1,0]
@@ -392,10 +382,7 @@ right = [2,2]
 
 output:
 12
-2 + 1 + 3 + 2 + 3 + 1 = 12
-
-*/
-
+2 + 1 + 3 + 2 + 3 + 1 = 12 */
 function matrixSum(matrix, left, right){
 	// empty sum variable to keep count
 	var sum = 0;
@@ -418,8 +405,7 @@ matrixSum([[0,1,2], [2,1,3], [2,3,1]], [1,1], [2,2]);
 
 
 
-/*
-add all diagonal values in a given matrix
+/* add all diagonal values in a given matrix
 
 input:
 left = [0,0]
@@ -430,10 +416,7 @@ right = [2,2]
 
 output:
 6
-3 + 2 + 1 = 12
-
-*/
-
+3 + 2 + 1 = 12 */
 function diagonalMatrix(matrix, left, right){
 	// empty sum variable to keep count
 	var sum = 0;
@@ -463,10 +446,7 @@ input: [1,2], [2,3]
 
 output:
 8
-1 + 3 + 3 + 1 = 8
-
-*/
-
+1 + 3 + 3 + 1 = 8 */
 function anyMatrixSum(matrix, left, right){
 	var sum = 0;
 	for(var i = left[0]; i <= right[0]; i++){
@@ -538,13 +518,10 @@ function validIP(string){
 
 
 
-/*
-merge two sorted arrays into one sorted array
+/* merge two sorted arrays into one sorted array
 
 input: [1, 5, 7], [2, 3, 6]
-output: [1,2,3,5,7];
-
-*/
+output: [1,2,3,5,7]; */
 function mergeSortedArrays(array1, array2){
 	var result = [];
 	function helper(firstIndex, secondIndex){
@@ -620,57 +597,32 @@ function mergeSortedArrays(arr1, arr2){
 	return result;
 }
 
-
-
-
-
-function mergeSort(array){
-	var result = [], middle, left, right, first, second;
-    if (array.length < 2) {
-        return array;
-    }
-
-    middle = Math.floor(array.length / 2),
-    left = mergeSort(array.slice(0, middle));
-	right = mergeSort(array.slice(middle));
-
-	while(first < left.length || second < right.length){
-		leftNum = left[first], rightNum = right[second];
-		if(leftNum <= rightNum){
-			result.push(leftNum);
-			first++;
+function merge(leftArr, rightArr){
+	var result = []; left = 0, right = 0;
+	while(left < leftArr.length && right < rightArr.length){
+		if(leftArr[left] < rightArr[right]){
+			result.push(leftArr[left]);
+			left++;
 		} else {
-			result.push(rightNum);
-			second++;
+			result.push(rightArr[right]);
+			right++;
 		}
 	}
-
-	while(first < left.length){
-		result.push(left[first]);
-		first++;
-	}
-	while(second < right.length){
-		result.push(right[second]);
-		second++;
-	}
+	return result.concat(leftArr.slice(left).concat(rightArr.slice(right)));
 }
-mergeSort([38, 27, 43, 3, 9, 82, 10]);
-[2, 8, 5, 3 ,9, 4, 1, 7]
-left =
-right =
 
 
-/*
-given an array of numbers, return the indices where the values add up to the target
+
+
+
+/* given an array of numbers, return the indices where the values add up to the target
 return -1 if there is no match
 
 input: array = [4,2,6,5,9,10], target = 13
 output: [0, 4];
 
 input: array = [4,2,9,10], target = 23
-output: -1
-
-*/
+output: -1 */
 
 // NAIVE SOLUTIONS
 function twoSum(nums, target){
@@ -696,7 +648,6 @@ function twoSum(nums, target){
 	return -1;
 }
 twoSum([4,2,9,10], 11);
-
 
 // Using a hash to make matching more efficient
 function twoSum(nums, target){
@@ -752,13 +703,9 @@ function twoSum(array, target){
 
 
 
-/*
-given an array of bits, return them in order
+/* given an array of bits, return them in order
 input: [0, 1, 1, 0, 1, 1, 1, 0]
-output: [0, 0, 0, 1, 1, 1, 1, 1]
-
-*/
-
+output: [0, 0, 0, 1, 1, 1, 1, 1] */
 function sortBits(array){
 	var zeros = [], ones = [];
 	for(var i = 0; i < array.length; i++){
@@ -788,24 +735,5 @@ function bubbleSort(array){
 	}
 	return array;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
