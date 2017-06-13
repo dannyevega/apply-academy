@@ -545,7 +545,7 @@ input: [1, 5, 7], [2, 3, 6]
 output: [1,2,3,5,7];
 
 */
-function mergeTwoArrays(array1, array2){
+function mergeSortedArrays(array1, array2){
 	var result = [];
 	function helper(firstIndex, secondIndex){
 		// base case -- if BOTH indices are bigger than the length of its array, we know to return
@@ -606,7 +606,7 @@ function mergeSortedArrays(arr1, arr2){
 }
 mergeSortedArrays([1,3,5,7], [2,4]);
 
-function mergeSorted(arr1, arr2){
+function mergeSortedArrays(arr1, arr2){
 	var result = [], first = 0, second = 0;
 	while(first < arr1.length || second < arr2.length){
 		if(arr1[first] < arr2[second] || second >= arr2.length){
@@ -622,6 +622,42 @@ function mergeSorted(arr1, arr2){
 
 
 
+
+
+function mergeSort(array){
+	var result = [], middle, left, right, first, second;
+    if (array.length < 2) {
+        return array;
+    }
+
+    middle = Math.floor(array.length / 2),
+    left = mergeSort(array.slice(0, middle));
+	right = mergeSort(array.slice(middle));
+
+	while(first < left.length || second < right.length){
+		leftNum = left[first], rightNum = right[second];
+		if(leftNum <= rightNum){
+			result.push(leftNum);
+			first++;
+		} else {
+			result.push(rightNum);
+			second++;
+		}
+	}
+
+	while(first < left.length){
+		result.push(left[first]);
+		first++;
+	}
+	while(second < right.length){
+		result.push(right[second]);
+		second++;
+	}
+}
+mergeSort([38, 27, 43, 3, 9, 82, 10]);
+[2, 8, 5, 3 ,9, 4, 1, 7]
+left =
+right =
 
 
 /*
@@ -724,19 +760,34 @@ output: [0, 0, 0, 1, 1, 1, 1, 1]
 */
 
 function sortBits(array){
-	var zeros = [], ones = [], current;
+	var zeros = [], ones = [];
 	for(var i = 0; i < array.length; i++){
-		current = array[i];
-		if(current === 0){
-			zeros.push(current);
-		} else if(current === 1){
-			ones.push(current);
+		if(array[i] === 0){
+			zeros.push(array[i]);
+		} else if(array[i] === 1){
+			ones.push(array[i]);
 		}
 	}
 	return zeros.concat(ones);
 }
 
 
+
+
+
+// BUBBBLE SORT
+function bubbleSort(array){
+	for(var i = 0; i < array.length; i++){
+		for(var j = 0; j < array.length - 1; j++){
+			if(array[j] > array[j + 1]){
+				var temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	}
+	return array;
+}
 
 
 
