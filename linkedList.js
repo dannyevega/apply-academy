@@ -55,9 +55,11 @@ LinkedList.prototype.deleteAtStart = function(){
 }
 
 LinkedList.prototype.deleteAtEnd = function(){
-	var current = this.head, prev = null;
+	var current = this.head, prev = null, message = {failure: "Linked List is empty."};
 
-	if(current.next === null){
+	if(!current){
+		throw new Error(message.failure);
+	} else if(current.next === null){
 		this.head = current.next;
 	} else {
 		while(current.next){
@@ -68,8 +70,24 @@ LinkedList.prototype.deleteAtEnd = function(){
 	}
 }
 
+LinkedList.prototype.contains = function(value){
+	var current = this.head;
+
+	while(current !== null){
+		if(current.value === value){
+			return true;
+		}
+		current = current.next;
+	}
+	return false;
+}
+
 LinkedList.prototype.deleteValue = function(value){
-	var current = this.head, prev = null;
+	var current = this.head, prev = null, message = {failure: "Value not found in this Linked List"};
+
+	if(!this.contains(value)){
+		throw new Error(message.failure);
+	}
 
 	if(current.value === value){
 		this.head = current.next;
