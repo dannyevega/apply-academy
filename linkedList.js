@@ -111,3 +111,22 @@ LinkedList.prototype.deleteValue = function(value){
 	}
 }
 
+LinkedList.prototype.returnNodeAt = function(position){
+	var current = this.head, length = this.length, count = 1, message = {failure: "Value not found in this Linked List"};
+
+	if(length === 0 || position < 1 || position > length){
+		throw new Error(message.failure);
+	}
+
+	while(count < position){
+		current = current.next;
+		count++;
+	}
+	return current;
+}
+
+
+
+
+
+
