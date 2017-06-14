@@ -7,13 +7,13 @@ function LinkedList(){
 	this.head = null;
 }
 
-LinkedList.prototype.prepend = function(value){
+LinkedList.prototype.addAtStart = function(value){
 	var node = new Node(value);
 	node.next = this.head;
 	this.head = node;
 }
 
-LinkedList.prototype.add = function(value){
+LinkedList.prototype.addAtEnd = function(value){
 	var node = new Node(value), prev = null, current = this.head;
 
 	while(current){
@@ -44,5 +44,27 @@ LinkedList.prototype.addAtPosition = function(value, position){
 	}
 }
 
+LinkedList.prototype.deleteAtStart = function(){
+	var current = this.head, message = {failure: "Linked List is empty."};
 
+	if(!current){
+		throw new Error(message.failure);
+	} else {
+		this.head = current.next;
+	}
+}
+
+LinkedList.prototype.deleteAtEnd = function(){
+	var current = this.head, prev = null;
+
+	while(current.next){
+		prev = current;
+		current = current.next;
+	}
+	prev.next = null;
+}
+
+LinkedList.prototype.deleteAtPosition = function(){
+	
+}
 
