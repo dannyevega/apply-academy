@@ -5,12 +5,14 @@ function Node(value){
 
 function LinkedList(){
 	this.head = null;
+	this.length = 0;
 }
 
 LinkedList.prototype.addAtStart = function(value){
 	var node = new Node(value);
 	node.next = this.head;
 	this.head = node;
+	this.length++;
 }
 
 LinkedList.prototype.addAtEnd = function(value){
@@ -22,8 +24,10 @@ LinkedList.prototype.addAtEnd = function(value){
 	}
 	if(prev){
 		prev.next = node;
+		this.length++;
 	} else {
 		this.head = node;
+		this.length++;
 	}
 }
 
@@ -33,6 +37,7 @@ LinkedList.prototype.addAtPosition = function(value, position){
 	if(position === 1){
 		node.next = this.head;
 		this.head = node;
+		this.length++;
 	} else {
 		while(count < position){
 			prev = current;
@@ -41,6 +46,7 @@ LinkedList.prototype.addAtPosition = function(value, position){
 		}
 		prev.next = node;
 		node.next = current;
+		this.length++;
 	}
 }
 
@@ -51,6 +57,7 @@ LinkedList.prototype.deleteAtStart = function(){
 		throw new Error(message.failure);
 	} else {
 		this.head = current.next;
+		this.length--;
 	}
 }
 
@@ -61,12 +68,14 @@ LinkedList.prototype.deleteAtEnd = function(){
 		throw new Error(message.failure);
 	} else if(current.next === null){
 		this.head = current.next;
+		this.length--;
 	} else {
 		while(current.next){
 			prev = current;
 			current = current.next;
 		}
 		prev.next = null;
+		this.length--;
 	}
 }
 
@@ -91,12 +100,14 @@ LinkedList.prototype.deleteValue = function(value){
 
 	if(current.value === value){
 		this.head = current.next;
+		this.length--;
 	} else {
 		while(current.value !== value){
 			prev = current;
 			current = current.next;
 		}
 		prev.next = current.next;
+		this.length--;
 	}
 }
 
