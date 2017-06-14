@@ -57,14 +57,28 @@ LinkedList.prototype.deleteAtStart = function(){
 LinkedList.prototype.deleteAtEnd = function(){
 	var current = this.head, prev = null;
 
-	while(current.next){
-		prev = current;
-		current = current.next;
+	if(current.next === null){
+		this.head = current.next;
+	} else {
+		while(current.next){
+			prev = current;
+			current = current.next;
+		}
+		prev.next = null;
 	}
-	prev.next = null;
 }
 
-LinkedList.prototype.deleteAtPosition = function(){
-	
+LinkedList.prototype.deleteValue = function(value){
+	var current = this.head, prev = null;
+
+	if(current.value === value){
+		this.head = current.next;
+	} else {
+		while(current.value !== value){
+			prev = current;
+			current = current.next;
+		}
+		prev.next = current.next;
+	}
 }
 
