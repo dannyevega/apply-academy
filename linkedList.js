@@ -124,9 +124,3 @@ LinkedList.prototype.returnNodeAt = function(position){
 	}
 	return current;
 }
-
-
-
-
-
-

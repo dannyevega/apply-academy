@@ -109,3 +109,32 @@ function bubbleSort(array){
 	return array;
 }
 bubbleSort([7,5,2,4,3,9]);
+
+
+
+
+
+// MERGE SORT
+function mergeSort(array){
+	var middle, left, right, result = [], leftCount = 0, rightCount = 0;;
+
+	if(array.length < 2){
+		return array;
+	}
+
+	middle = Math.floor(array.length / 2);
+	left = mergeSort(array.slice(0, middle));
+	right = mergeSort(array.slice(middle));
+
+	while(leftCount < left.length || rightCount < right.length){
+		if(left[leftCount] < right[rightCount] || rightCount >= right.length){
+			result.push(left[leftCount]);
+			leftCount++;
+		} else {
+			result.push(right[rightCount]);
+			rightCount++;
+		}
+	}
+	return result;
+}
+
