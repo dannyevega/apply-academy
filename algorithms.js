@@ -737,3 +737,35 @@ function bubbleSort(array){
 }
 
 
+
+
+
+/* You have array of integers nums and you need to return a new counts array. In the new counts array, counts[i] is the number of smaller elements to the right of nums[i].
+
+For nums = [3, 8, 4, 1], the output should be
+countSmallerToTheRight(nums) = [1, 2, 1, 0]. */
+function countSmallerToTheRight(nums){
+	var result = [], count;
+	for(var i = 0; i < nums.length; i++){
+		count = 0;
+		for(var j = i + 1; j < nums.length; j++){
+			if(nums[i] > nums[j]){
+				count++;
+			}
+		}
+		result.push(count);
+	}
+	return result;
+}
+input = [3, 8, 4, 1]
+output = [1, 2, 1, 0]
+
+
+
+
+
+
+
+
+
+
