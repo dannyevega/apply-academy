@@ -138,3 +138,25 @@ function mergeSort(array){
 	return result;
 }
 
+function mergeSort(arr){
+	var result = [], leftCount = 0, rightCount = 0, left, middle, right;
+
+	if(arr.length < 2){
+		return arr;
+	}
+
+	middle = Math.floor(arr.length / 2);
+	left = mergeSort(arr.slice(0, middle));
+	right = mergeSort(arr.slice(middle));
+
+	while(leftCount < left.length && rightCount < right.length){
+		if(left[leftCount] < right[rightCount]){
+			result.push(left[leftCount]);
+			leftCount++;
+		} else {
+			result.push(right[rightCount]);
+			rightCount++;
+		}
+	}
+	return result.concat(left.slice(leftCount).concat(right.slice(rightCount)));
+}
