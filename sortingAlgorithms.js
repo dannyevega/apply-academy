@@ -160,3 +160,76 @@ function mergeSort(arr){
 	}
 	return result.concat(left.slice(leftCount).concat(right.slice(rightCount)));
 }
+
+function mergeSort(arr){
+	var left, middle, right;
+
+	if(arr.length < 2){
+		return arr;
+	}
+
+	middle = Math.floor(arr.length / 2);
+	left = arr.slice(0, middle);
+	right = arr.slice(middle);
+
+	return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(arr1, arr2){
+	var result = [], leftCount = 0, rightCount = 0;
+
+	while(leftCount < arr1.length && rightCount < arr2.length){
+		if(arr1[leftCount] < arr2[rightCount]){
+			result.push(arr1[leftCount]);
+			leftCount++;
+		} else {
+			result.push(arr2[rightCount]);
+			rightCount++;
+		}
+	}
+	return result.concat(arr1.slice(leftCount).concat(arr2.slice(rightCount)));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
