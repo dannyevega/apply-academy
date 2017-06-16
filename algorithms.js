@@ -812,3 +812,65 @@ function moveZeros(array) {
 
 
 
+/* Find the missing number. Assume an array of non-negative integers. A second array is formed by shuffling the elements of the first array and deleting a random element. Given these two arrays, find which element is missing in the second array.
+
+input = [1, 3, 9, 12, 5], [1, 3, 12, 5]
+output = 9 */
+function findMissingNumber(arr1, arr2){
+	var sum1 = 0, sum2 = 0;
+	for(var i = 0; i < arr1.length; i++){
+		sum1 += arr1[i];
+	}
+	for(var i = 0; i < arr2.length; i++){
+		sum2 += arr2[i];
+	}
+	return sum1 - sum2;
+}
+
+
+files = {
+	'a': {
+		'b': {
+			'c': {
+				'd': {
+					'e': true;
+				},
+				'f': true;
+			}
+		}
+	}
+}
+files = {
+  'a' => {
+    'b' => {
+      'c' => {
+        'd' => {
+          'e' => true
+        },
+
+        'f' => true
+      }
+    }
+  }
+}
+
+files = {'a': {'b': {'c': {'d': {'e': true;}, 'f': true;}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
