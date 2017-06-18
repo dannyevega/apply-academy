@@ -852,6 +852,23 @@ function upcaseRecursive(str){
 
 
 
+function reverseStringRecursive(str){
+	var result = "";
+	function helper(index){
+		if(index < 0){
+			return;
+		} else {
+			result += str[index];
+			helper(index - 1);
+		}
+	}
+	helper(str.length - 1);
+	return result;
+}
+reverseStringRecursive("we out here");
+
+
+
 
 
 
