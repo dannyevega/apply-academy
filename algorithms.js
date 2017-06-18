@@ -764,7 +764,9 @@ output = [1, 2, 1, 0]
 
 
 
-/* Given an array, move all zeros to the end. The order of non-zero elements does not matter */
+/* Given an array, move all zeros to the end. The order of non-zero elements does not matter
+input = [1,0,0,4,5,0,9]
+output = [1,4,5,9,0,0,0] */
 function moveZeros(array){
 	var zeroCounter = array.length - 1;
 	for(var i = 0; i < array.length && i < zeroCounter; i++){
@@ -828,34 +830,23 @@ function findMissingNumber(arr1, arr2){
 }
 
 
-files = {
-	'a': {
-		'b': {
-			'c': {
-				'd': {
-					'e': true;
-				},
-				'f': true;
-			}
-		}
-	}
-}
-files = {
-  'a' => {
-    'b' => {
-      'c' => {
-        'd' => {
-          'e' => true
-        },
 
-        'f' => true
-      }
+
+
+/* Upper case a string recursively */
+function upcaseRecursive(str){
+	var result = "";
+	function helper(index){
+		if(index === str.length){
+			return;
+        } else {
+			result += str[index].toUpperCase();
+			helper(index + 1);
+        }
     }
-  }
+	helper(0);
+	return result;
 }
-
-files = {'a': {'b': {'c': {'d': {'e': true;}, 'f': true;}}}
-
 
 
 
