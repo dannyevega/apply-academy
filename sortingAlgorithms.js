@@ -33,7 +33,7 @@ output: -1
 */
 
 // This solution uses the brute force approach -- it tries every single possible pair combination to see if sum === target
-// This would be O(n) time complexity
+// This would be O(n^2) time complexity
 function twoSum(array, target){
 	for(var i = 0; i < array.length; i++){
 		for(var j = i + 1; j < array.length; j++){
@@ -115,6 +115,7 @@ bubbleSort([7,5,2,4,3,9]);
 
 
 // MERGE SORT
+// Recursive solution
 function mergeSort(array){
 	var middle, left, right, result = [], leftCount = 0, rightCount = 0;;
 
@@ -138,6 +139,7 @@ function mergeSort(array){
 	return result;
 }
 
+// Recursive solution
 function mergeSort(arr){
 	var result = [], leftCount = 0, rightCount = 0, left, middle, right;
 
@@ -161,7 +163,8 @@ function mergeSort(arr){
 	return result.concat(left.slice(leftCount).concat(right.slice(rightCount)));
 }
 
-function mergeSort(arr){
+// Recursive solution
+function mergeSortRecursive(arr){
 	var left, middle, right;
 
 	if(arr.length < 2){
@@ -174,7 +177,6 @@ function mergeSort(arr){
 
 	return merge(mergeSort(left), mergeSort(right));
 }
-
 function merge(arr1, arr2){
 	var result = [], leftCount = 0, rightCount = 0;
 
@@ -190,9 +192,25 @@ function merge(arr1, arr2){
 	return result.concat(arr1.slice(leftCount).concat(arr2.slice(rightCount)));
 }
 
+// Iterative solution
+function mergeSortIterative(arr){
+	var work = [];
+	if(arr.length < 2){
+		return arr;
+	}
 
+	for(var i = 0; i < arr.length; i++){
+		work.push([arr[i]]);
+	}
 
+	while(work.length > 1){
+		left = work.shift();
+		right = work.shift();
+		work.push(merge(left, right));
+	}
 
+	return work[0];
+}
 
 
 
