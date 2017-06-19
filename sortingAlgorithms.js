@@ -216,31 +216,32 @@ function mergeSortIterative(arr){
 
 
 
+/* QUICK SORT
+basic solution for quicksort algorithm
+1. divide and conquer algorithm -- this solution chooses a pivot value, then iterates through the array pushing all elements less than the pivot value into the lesser array and all values greater than the pivot value into the greater array
+2. it then rcursively calls the quickSort function on the less side and greater side
+3. once the stack completes for each of those sides, the lesser array will be sorted as well as the greater side
+4. we then add these two arrays back together
+*/
+function quickSort(arr){
+	var pivot = arr[arr.length - 1], lesser = [], greater = [];
 
+	if(arr.length < 2){
+		return arr;
+	}
 
+	for(var i = 0; i < arr.length - 1; i++){
+		if(arr[i] < pivot){
+			lesser.push(arr[i]);
+		} else {
+			greater.push(arr[i]);
+		}
+	}
 
+	return quickSort(lesser).concat(pivot).concat(quickSort(greater));
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+quicksort([4,2,6,5,1,3]);
 
 
 
