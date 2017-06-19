@@ -116,6 +116,11 @@ bubbleSort([7,5,2,4,3,9]);
 
 // MERGE SORT
 // Recursive solution
+/* Idea behing Merge Sort:
+- divide and conquer type of algorithm
+- recursively break down the array into smaller and smaller pieces each time until you only have one element in each array
+- then, compare these single element arrays to each other and merge them together in ascending order
+*/
 function mergeSort(array){
 	var middle, left, right, result = [], leftCount = 0, rightCount = 0;;
 
