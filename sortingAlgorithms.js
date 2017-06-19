@@ -242,7 +242,51 @@ function quickSort(arr){
 }
 
 quicksort([4,2,6,5,1,3]);
+/*
+Step 1:
+arr = [4,2,6,5,1,3]
+pivot = 3
+at end of initial call to quickSort with the initial array, we get this:
+lesser = [2, 1];
+greater = [4,6,5];
 
+Step 2:
+then, the quickSort recursively calls itself on the lesser side. We then get:
+arr = [2, 1]
+pivot = 1
+lesser = [];
+greater = [2];
+
+Step 3:
+at this point, the recursive call to the initial quickSort(lesser) returns and can fall off the stack:
+lesser + pivot + greater
+[].concat(1).concat([2]) --> [1, 2]
+this sorted array is returned to the initial quickSort call waiting for the greater side to be sorted so then it can add these two arrays together
+
+Step 4:
+add the pivot value since we know the lesser side is not sorted
+lesser + pivot + greater
+[1, 2].concat(3).concat(quickSort(greater)) --> [1, 2, 3]
+we are still waiting for the greater side to be sorted
+
+Step 5:
+quickSort is called on the initial greater array:
+arr = [4, 6, 5];
+pivot = 5
+lesser = [4]
+greater = [6]
+
+Step 6:
+both sizes of the array are now less than 2 so we can return and add them together:
+lesser + pivot + greater
+[4].concat(5).concat([6]) --> [4, 5, 6]
+
+Step 7:
+now, we have both lesser and greater sides sorted and can add them all together:
+lesser + pivot + greater
+[1, 2, 3].concat([2]) --> [4, 5, 6]
+[1, 2, 3, 4, 5, 6]
+*/
 
 
 
