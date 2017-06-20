@@ -293,7 +293,35 @@ lesser + pivot + greater
 [1, 2, 3, 4, 5, 6]
 */
 
+// Making use of swap and partition functions
+function swap(arr, a, b){
+    let temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
+}
 
+function partition(arr, left, right){
+    let pivot = arr[right], partitionIndex = left;
+
+    for(var i = left; i < right; i++){
+        if(arr[i] < pivot){
+            swap(arr, i, partitionIndex);
+            partitionIndex++;
+        }
+    }
+    swap(arr, right, partitionIndex);
+    return partitionIndex;
+}
+
+function quickSort(arr, left = 0, right = arr.length - 1){
+    let partitionIndex;
+    if(left < right){
+        partitionIndex = partition(arr, left, right);
+        quickSort(arr, left, partitionIndex - 1);
+        quickSort(arr, partitionIndex + 1, right);
+    }
+    return arr;
+}
 
 
 
