@@ -871,7 +871,25 @@ reverseStringRecursive("we out here");
 
 
 
-
+// 2e. Flatten a nested array using the Helper Method of Recursion
+// Input: Array of integers and arrays
+// Output: Array of integers
+// Example: flatten([1, [2, 3, [4]], 5, [[6]]]) => [1, 2, 3, 4, 5, 6]
+function flatten(array){
+    var result = [];
+    function helper(currentObj){
+        for(var i = 0; i < currentObj.length; i++){
+            if(typeof currentObj[i] === "number"){
+                result.push(currentObj[i]);
+            } else {
+                helper(currentObj[i]);
+            }
+        }
+        return result;
+    }
+    return helper(array);
+}
+flatten([1, [2, 3, [4]], 5, [[6]]]);
 
 
 
