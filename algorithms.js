@@ -895,7 +895,19 @@ flatten([1, [2, 3, [4]], 5, [[6]]]);
 
 
 
-
+/* Turn decimal number into binary number
+input: 5
+output: 101 */
+function numToBinary(num){
+	var binary = [], remainder, formatted;
+	while(num >= 1){
+		remainder = num % 2;
+		binary.push(remainder);
+		num = Math.floor(num / 2);
+	}
+	formatted = binary.reverse().join("");
+	return Number(formatted);
+}
 
 
 
