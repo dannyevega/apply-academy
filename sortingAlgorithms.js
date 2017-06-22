@@ -22,16 +22,6 @@ function mergeTwoSortedArrays(leftArr, rightArr){
 }
 mergeTwoSortedArrays([1,3,5], [2,4,6,8,10]);
 
-/* Mutiple pointers example 2
-Given an array of numbers, return the indices where the values add up to the target return -1 if there is no match
-
-input: array = [4,2,6,5,9,10], target = 13
-output: [0, 4];
-
-input: array = [4,2,9,10], target = 23
-output: -1
-*/
-
 
 
 
