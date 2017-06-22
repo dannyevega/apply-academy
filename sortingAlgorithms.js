@@ -243,6 +243,7 @@ lesser + pivot + greater
 */
 
 // Making use of swap and partition functions
+// can pass initial values into quickSort function and will only be set at first call
 function swap(arr, a, b){
     let temp = arr[a];
     arr[a] = arr[b];
