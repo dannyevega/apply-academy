@@ -682,6 +682,7 @@ twoSum([4,2,9,10], 11);
 /* given an array of bits, return them in order
 input: [0, 1, 1, 0, 1, 1, 1, 0]
 output: [0, 0, 0, 1, 1, 1, 1, 1] */
+// Naive solution -- creating more space and concatanating two arrays
 function sortBits(array){
 	var zeros = [], ones = [];
 	for(var i = 0; i < array.length; i++){
@@ -692,6 +693,36 @@ function sortBits(array){
 		}
 	}
 	return zeros.concat(ones);
+}
+
+// using the swap function below, this will run in O(n) time because we are swapping in place
+/*
+1. Set two pointers, one at left and one at right -- left is equal to 0 and right is equal to index at end of array
+2. We set two pointers so we can iterate inward -- avoid using for loops when we set two pointers
+3. Loop while left is less than right
+4. Since we know we want 0's on the left and 1's on the right, we can loop from the left point to check while the current element is a 0 and continue incrementing -- when we reach a 1, we know its time to swap
+5. Loop from the end of the array to check if each element is a 1 and continue decrementing the right count -- when we reach a 0, we know its time to swap
+6. Check if the current left count is less than the current right count and swap -- if less is ever greater than right, weve already crossed paths and the bits should be sorted
+*/
+function swap(arr, a, b){
+	let temp = arr[a];
+	arr[a] = arr[b];
+	arr[b] = temp;
+}
+function sortBits(arr){
+	let left = 0, right = arr.length - 1;
+	while(left < right){
+		while(arr[left] === 0){
+			left++;
+		}
+		while(arr[right] === 1){
+			right--;
+		}
+		if(left < right){
+			swap(arr, left, right);
+		}
+	}
+	return arr;
 }
 
 
