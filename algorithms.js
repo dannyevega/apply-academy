@@ -625,65 +625,22 @@ input: array = [4,2,9,10], target = 23
 output: -1 */
 
 // NAIVE SOLUTIONS
-function twoSum(nums, target){
-	for(var i = 0; i < nums.length; i++){
-		for(var j = i + 1; j < nums.length; j++){
-			if(nums[i] + nums[j] === target){
-				return [i, j];
+// This solution uses the brute force approach -- it tries every single possible pair combination to see if sum === target
+// This would be O(n^2) time complexity
+function twoSum(array, target){
+	for(var i = 0; i < array.length; i++){
+		for(var j = i + 1; j < array.length; j++){
+			if(array[i] + array[j] === target){
+				return [i, j]
 			}
 		}
 	}
-	return -1;
-}
-
-function twoSum(nums, target){
-	for(var i = 0; i < nums.length; i++){
-		difference = target - nums[i];
-		for(var j = i + 1; j < nums.length; j++){
-			if(nums[j] === difference){
-				return [i, j];
-			}
-		}
-	}
-	return -1;
+	return -1
 }
 twoSum([4,2,9,10], 11);
 
-// Using a hash to make matching more efficient
-function twoSum(nums, target){
-	var map = {}, current;
-	for(var i = 0; i < nums.length; i++){
-		current = nums[i];
-		if(map[current]){
-			return true;
-		}
-		map[target - current] = true;
-	}
-	return false;
-}
-twoSum([2,4,9,10], 11);
-
-function twoSum(nums, target){
-	// set empty hash to hold out elements along with their indices
-	var map = {}, current;
-	for(var i = 0; i < nums.length; i++){
-		// set the current value equal to current
-		current = nums[i];
-		// if current is not inside the map, set the value equal to its index i.e. map = { 2: 0 }
-		if(!map[current]){
-			map[current] = i;
-		}
-		// now check if weve found the current values difference at some point
-		// since we are evaluting for truthy values, well need to check if the value exists in the map OR if the value is equal to 0
-		// for example, map[2] = 0 but 0 is a falsy number. running 'if(map[2])' wont return anything because 0 is not true
-		if(map[target - current] || map[target - current] === 0){
-			return [map[target - current], i]
-		}
-	}
-	return -1;
-}
-twoSum([2,4,9,10], 11);
-
+// Use 2 for loops although we dont need 2 for loops...just makes more sense to break into 2 loops for clarity of the problem
+// O(n) using a frequency hash
 function twoSum(array, target){
 	var map = {}, current;
 	for(var i = 0; i < array.length; i++){
@@ -698,6 +655,25 @@ function twoSum(array, target){
 	}
 	return -1;
 }
+
+// We use a hash here to check if the difference was ever found then return those indices
+// O(n) using a frequency hash
+function twoSum(array, target){
+	var map = {}, current;
+	for(var i = 0; i < array.length; i++){
+		current = array[i];
+		// set all elements in the array as a key in a map set to its index -- > map = {2: 1, 4: 0, 9: 2, 10: 3}
+		if(!map[current]){
+			map[current] = i;
+		}
+		// we check for 'map[target - current] === 0' because if that difference is found in the map and its value is 0, we need to check for that because map[4] = 0 --> if(0) is falsy so it wont evaluate
+		if(map[target - current] || map[target - current] === 0){
+			return [map[target - current], i];
+		}
+	}
+	return -1;
+}
+twoSum([4,2,9,10], 11);
 
 
 

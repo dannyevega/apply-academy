@@ -32,62 +32,11 @@ input: array = [4,2,9,10], target = 23
 output: -1
 */
 
-// This solution uses the brute force approach -- it tries every single possible pair combination to see if sum === target
-// This would be O(n^2) time complexity
-function twoSum(array, target){
-	for(var i = 0; i < array.length; i++){
-		for(var j = i + 1; j < array.length; j++){
-			if(array[i] + array[j] === target){
-				return [i, j]
-			}
-		}
-	}
-	return -1
-}
-twoSum([4,2,9,10], 11);
-
-// Use 2 for loops although we dont need 2 for loops...just makes more sense to break into 2 loops for clarity of the problem
-// O(n) using a frequency hash
-function twoSum(array, target){
-	var map = {}, current;
-	for(var i = 0; i < array.length; i++){
-		if(!map[array[i]]){
-			map[array[i]] = i;
-		}
-	}
-	for(var i = 0; i < array.length; i++){
-		if(map[target - array[i]]){
-			return [ i, map[target - array[i]] ];
-		}
-	}
-	return -1;
-}
-
-// We use a hash here to check if the difference was ever found then return those indices
-// O(n) using a frequency hash
-function twoSum(array, target){
-	var map = {}, current;
-	for(var i = 0; i < array.length; i++){
-		current = array[i];
-		// set all elements in the array as a key in a map set to its index -- > map = {2: 1, 4: 0, 9: 2, 10: 3}
-		if(!map[current]){
-			map[current] = i;
-		}
-		// we check for 'map[target - current] === 0' because if that difference is found in the map and its value is 0, we need to check for that because map[4] = 0 --> if(0) is falsy so it wont evaluate
-		if(map[target - current] || map[target - current] === 0){
-			return [map[target - current], i];
-		}
-	}
-	return -1;
-}
-twoSum([4,2,9,10], 11);
-
 
 
 
 
 // BUBBLE SORT
-
 /*
 1. Iterate through the length of the array for outer loop
 2. Iterate through lenght of array - 1 for inner loop -- works with length or length - 1 but we dont need to go through the whole array because the last element should be the largest
