@@ -895,7 +895,7 @@ flatten([1, [2, 3, [4]], 5, [[6]]]);
 
 
 
-/* Turn decimal number into binary number
+/* Turn decimal number into binary number...decimals to binary
 input: 5
 output: 101 */
 function numToBinary(num){
