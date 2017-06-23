@@ -27,6 +27,51 @@ function bubbleSort(array){
 }
 bubbleSort([7,5,2,4,3,9]);
 
+// Bubble Sort sucks but both of these solutions below are a bit more optimized. If we already have a sorted algorithm, we can pass a 'changed' variable to check whether or not any elements were swapped in the iniital pass. If they weren't swapped, we know the array is sorted and we can return the array -- no need to continue looping. We can also decrement the amount of the array we have left to check because if we swap during any pass, we know the largest number will be at the end, then the second to the last, third to last etc. there's no need to loop through the end when the last elements will always be larger
+function bubbleSort(arr){
+	let i, j, temp, limit = arr.length, changed = false;
+	while(limit--){
+		for(i = 0, j = 1; i < limit; i++, j++){
+			if(arr[i] > arr[j]){
+				changed = true;
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+		if(!changed){
+			return arr;
+		}
+	}
+	return arr;
+}
+
+function bubbleSort(arr){
+	let limit = arr.length - 1, changed = false, i, j, temp;
+	for(i = 0; i < limit; i++){
+		for(j = 0; j < limit; j++){
+			if(arr[j] > arr[j + 1]){
+				changed = true;
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+		if(!changed){
+			return arr;
+		}
+		limit--;
+	}
+	return arr;
+}
+arr = [1,2,3]
+arr = [5,3,2,9,6]
+
+
+
+
+
+
 
 
 
