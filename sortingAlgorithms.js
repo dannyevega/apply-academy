@@ -1,3 +1,36 @@
+// BUBBLE SORT
+/*
+1. Iterate through the length of the array for outer loop
+2. Iterate through lenght of array - 1 for inner loop -- works with length or length - 1 but we dont need to go through the whole array because the last element should be the largest
+3. Check if current j is greater than j + 1
+4. If it is, swap the elements -- continue til reach end of array
+
+O(n^2) time complexity
+
+1. Start from the first element in the array and compare with the element right next to it on the right
+2. If the first element is greater than the second, swap their positions
+3. If not, we compare the second element with the third element and so on
+4. At end of first pass, we will have the highest number at the end of the array
+5. Continue for each element til each one 'bubbles' up to its sorted position
+*/
+function bubbleSort(array){
+	for(var i = 0; i < array.length; i++){
+		for(var j = 0; j < array.length - 1; j++){
+			if(array[j] > array[j + 1]){
+				let temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	}
+	return array;
+}
+bubbleSort([7,5,2,4,3,9]);
+
+
+
+
+
 // MULTIPLE POINTERS
 
 /* Mutiple pointers example 1
@@ -21,33 +54,6 @@ function mergeTwoSortedArrays(leftArr, rightArr){
 	return result.concat(leftArr.slice(left).concat(rightArr.slice(right)));
 }
 mergeTwoSortedArrays([1,3,5], [2,4,6,8,10]);
-
-
-
-
-
-// BUBBLE SORT
-/*
-1. Iterate through the length of the array for outer loop
-2. Iterate through lenght of array - 1 for inner loop -- works with length or length - 1 but we dont need to go through the whole array because the last element should be the largest
-3. Check if current j is greater than j + 1
-4. If it is, swap the elements -- continue til reach end of array
-*/
-
-// O(n^2) time complexity
-function bubbleSort(array){
-	for(var i = 0; i < array.length; i++){
-		for(var j = 0; j < array.length - 1; j++){
-			if(array[j] > array[j + 1]){
-				var temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
-			}
-		}
-	}
-	return array;
-}
-bubbleSort([7,5,2,4,3,9]);
 
 
 
