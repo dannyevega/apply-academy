@@ -71,11 +71,6 @@ arr = [5,3,2,9,6]
 
 
 
-
-
-
-
-
 // MULTIPLE POINTERS
 
 /* Mutiple pointers example 1
@@ -313,6 +308,7 @@ function quickSort(arr, left = 0, right = arr.length - 1){
     }
     return arr;
 }
+
 
 
 

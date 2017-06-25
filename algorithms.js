@@ -701,7 +701,7 @@ function sortBits(array){
 2. We set two pointers so we can iterate inward -- avoid using for loops when we set two pointers
 3. Loop while left is less than right
 4. Since we know we want 0's on the left and 1's on the right, we can loop from the left point to check while the current element is a 0 and continue incrementing -- when we reach a 1, we know its time to swap
-5. Loop from the end of the array to check if each element is a 1 and continue decrementing the right count -- when we reach a 0, we know its time to swap
+5. Also loop from the end of the array inward to check if each element is a 1 and continue decrementing the right count -- when we reach a 0, we know its time to swap
 6. Check if the current left count is less than the current right count and swap -- if less is ever greater than right, weve already crossed paths and the bits should be sorted
 */
 function swap(arr, a, b){
@@ -915,6 +915,94 @@ function numToBinary(num){
 	formatted = binary.reverse().join("");
 	return Number(formatted);
 }
+
+
+
+
+/* BINARY SEARCH
+1. Start with the full range of the array (0 to array length - 1).
+2. Check the value at the middle of that range.
+2. If mid matches target we return the mid index.
+3. If the mid is larger than target we can eliminate the right half.
+4. If the mid is less than target, we can eliminate the left half.
+5. Adjust the range depending on which half if still active.
+6. Repeat steps 2-5 until a match is found or the range is empty
+7. If the range is empty, return -1 */
+function binarySearch(arr, target){
+	let start = 0, end = arr.length - 1, mid;
+	while(start <= end){
+		mid = Math.floor((start + end) / 2);
+		if(arr[mid] === target){
+			return mid;
+		}
+		if(target < arr[mid]){
+			end = mid - 1;
+		} else {
+			start = mid + 1;
+		}
+	}
+	return -1;
+}
+
+function binarySearch(arr, target){
+	let middle;
+	function helper(start, end){
+		if(start > end){
+			return - 1;
+		} else {
+			middle = Math.floor((start + end) / 2);
+			if(target === arr[middle]){
+				return middle;
+			} else if(target < arr[middle]){
+				return helper(start, middle - 1);
+			} else {
+				return helper(middle + 1, end);
+			}
+		}
+	}
+	return helper(0, arr.length - 1);
+}
+binarySearch([1,2,5,6,24,33,40,55,99], 55);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
