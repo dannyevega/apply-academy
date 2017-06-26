@@ -102,10 +102,15 @@ LinkedList.prototype.deleteEnd = function(){
 	}
 }
 
+// [10] --> [20] --> [30] --> null
+// Create current variable set to this.head
+// 1. While there is a current value, check to see if that node's value is the one were looking for
+// 2. If the value is the current nodes value, return true
+// 3. Continue iterating to the next current node until we run out
+// 4. Return false if not foun
 LinkedList.prototype.contains = function(value){
-	var current = this.head;
-
-	while(current !== null){
+	let current = this.head;
+	while(current){
 		if(current.value === value){
 			return true;
 		}
@@ -114,15 +119,20 @@ LinkedList.prototype.contains = function(value){
 	return false;
 }
 
+// [10] --> [20] --> [30] --> null
+// Create current variable set to this.head, prev pointingto null, message set to failure message
+// 1. First, check to see if the value were looking to delete is even found in our LinkedList -- throw error if not found
+// 2. If the head node is the value were looking to delete, change this.head to null
+// 3. Else, we want to iterate through the list so long as the current value is not equal to the value were looking for
+// 4. Once the value were looking for is reached, the while loop will break out
+// 5. We then set the current node's (at this point, its the prev variable) next property to the next node of the node we want to delete
 LinkedList.prototype.deleteValue = function(value){
-	var current = this.head, prev = null, message = {failure: "Value not found in this Linked List"};
-
+	let current = this.head, prev = null, message = {failure: "Value not found in Linked List."};
 	if(!this.contains(value)){
 		throw new Error(message.failure);
 	}
-
 	if(current.value === value){
-		this.head = current.next;
+		this.head = null;
 		this.length--;
 	} else {
 		while(current.value !== value){
