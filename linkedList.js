@@ -79,12 +79,17 @@ LinkedList.prototype.deleteStart = function(){
 	}
 }
 
-LinkedList.prototype.deleteAtEnd = function(){
-	var current = this.head, prev = null, message = {failure: "Linked List is empty."};
-
+// [10] --> [20] --> [30] --> null
+// Create current variable set to this.head, prev set to null and failure message to be displayed if list is empty
+// 1. Throw an error if the list is empty
+// 2. If the list only has one node, then set this.head to current.next which is null
+// 3. Iterate through the list so long as current.next is true -- when it's no longer true, we know weve reached the end of list
+// 4. Set prev.next (which holds the current node) to point to null -- essentially, cutting off connection from last node
+LinkedList.prototype.deleteEnd = function(){
+	let current = this.head, prev = null, message = {failure: "Linked List is empty."};
 	if(!current){
 		throw new Error(message.failure);
-	} else if(current.next === null){
+	} else if(!current.next){
 		this.head = current.next;
 		this.length--;
 	} else {
