@@ -944,6 +944,7 @@ function binarySearch(arr, target){
 	return -1;
 }
 
+// use of helper function here to make binary recursive
 function binarySearch(arr, target){
 	let middle;
 	function helper(start, end){
@@ -963,46 +964,6 @@ function binarySearch(arr, target){
 	return helper(0, arr.length - 1);
 }
 binarySearch([1,2,5,6,24,33,40,55,99], 55);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
