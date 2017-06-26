@@ -144,13 +144,16 @@ LinkedList.prototype.deleteValue = function(value){
 	}
 }
 
-LinkedList.prototype.returnNodeAt = function(position){
-	var current = this.head, length = this.length, count = 1, message = {failure: "Value not found in this Linked List"};
-
+// [10] --> [20] --> [30] --> null
+// Create current variable set to this.head, message set to failure message, length set to the lists length, count set to 1
+// 1. Check to see whether the position were looking to return is not found in the list, if so, throw error
+// 2. Iterate while the count is less than the position
+// 3. As soon as the count is no longer less than the position, we can return the current node
+LinkedList.prototype.returnNode = function(position){
+	let current = this.head, length = this.length, count = 1, message = {failure: "Value not found in Linked List."};
 	if(length === 0 || position < 1 || position > length){
 		throw new Error(message.failure);
 	}
-
 	while(count < position){
 		current = current.next;
 		count++;
