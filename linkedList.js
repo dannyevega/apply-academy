@@ -42,7 +42,6 @@ LinkedList.prototype.addEnd = function(value){
 	}
 }
 
-
 // [10] --> [20] --> [30] --> null
 // Create a new node variable, count set to 1, prev set to null, current set to this.head
 // 2. First, check to see if the list is empty -- if it is, make node = this.head
