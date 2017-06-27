@@ -968,3 +968,26 @@ binarySearch([1,2,5,6,24,33,40,55,99], 55);
 
 
 
+
+/* camelCase is a concatenation of one or more words consisting of English letters.
+All letters in the first word are lowercase.
+For each of the subsequent words, the first letter is uppercase and rest of the letters are lowercase.
+
+Given a string S, print the number of words in S
+
+input: saveChangesInTheEditor
+output: 5 */
+// 1. Split the word into an array of characters
+// 2. Iterate and find all the uppercase letters -- if uppercase, increment count since each uppercase letter is beginning of enw word
+// 3. At end of iteration, count will be 4 then add 1 because of the first word
+function camelCase(str){
+	let letters = str.split(""), count = 0;
+	for(let i = 0; i < letters.length; i++){
+		if(letters[i] === letters[i].toUpperCase()){
+			count++;
+		}
+	}
+	return count + 1;
+}
+
+
