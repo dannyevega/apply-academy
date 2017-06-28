@@ -981,13 +981,95 @@ output: 5 */
 // 2. Iterate and find all the uppercase letters -- if uppercase, increment count since each uppercase letter is beginning of enw word
 // 3. At end of iteration, count will be 4 then add 1 because of the first word
 function camelCase(str){
-	let letters = str.split(""), count = 0;
+	let letters = str.split(""), count = 1;
 	for(let i = 0; i < letters.length; i++){
 		if(letters[i] === letters[i].toUpperCase()){
 			count++;
 		}
 	}
-	return count + 1;
+	return count;
 }
+
+
+
+
+
+// str = "beabeefeab";
+// map to hold unique letters found in string
+// map = {b: true, e: true, a: true, f: true};
+// iterate through the map to get access to each characters
+// we push in each letter at a time
+// inner for loop doesnt execute until weve populated letters array with characters
+// initially, lettes will be empty but after each for loop in object, a new letter will be added allowing us to find the combinations in letters
+function tString(str){
+	let map = {};
+	for(let i = 0; i < str.length; i++){
+		map[str[i]] = true;
+	}
+	let letters = [], charCombos = [];
+	for(let char in map){
+		for(let j = 0; j < letters.length; j++){
+			charCombos.push(char + letters[j]);
+		}
+		letters.push(char);
+	}
+	let longestLength = 0;
+	for(let k = 0; k < charCombos.length; k++){
+		let regex = new RegExp('[^' + charCombos[k] + ']', 'g');
+		let newStr = str.replace(regex, "");
+		let valid = true;
+		for(let l = 0; l < newStr.length; l++){
+			if(newStr[l] === newStr[l + 1]){
+				valid = false;
+			}
+		}
+		if(valid === true){
+			if(newStr.length > longestLength){
+				longestLength = newStr.length;
+			}
+		}
+	}
+	return longestLength;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
