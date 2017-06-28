@@ -1036,26 +1036,29 @@ function tString(str){
 
 
 
+gas = [3,5,15]
+cost = [5,6,4]
+function gasStation(gas, cost){
+	for(let i = 0; i < gas.length; i++){
+		let result = canComplete(gas, cost, i);
+		if(result[1]){
+			return i;
+		}
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	function canComplete(gas, cost, index){
+		let currentGas = 0, diff;
+		for(let j = 0; j < gas.length; j++){
+			diff = gas[(index + j) % gas.length] - cost[(index + j) % cost.length];
+			currentGas += diff;
+			if(currentGas < 0){
+				return [index + j, false];
+			}
+		}
+		return [index, true];
+	}
+	return -1;
+}
 
 
 
