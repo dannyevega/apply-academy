@@ -132,7 +132,7 @@ LinkedList.prototype.deleteValue = function(value){
 		throw new Error(message.failure);
 	}
 	if(current.value === value){
-		this.head = null;
+		this.head = current.next;
 		this.length--;
 	} else {
 		while(current.value !== value){
