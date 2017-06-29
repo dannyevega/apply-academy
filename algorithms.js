@@ -1092,7 +1092,26 @@ function findPrimeFactors(num){
 
 
 
-
+// Write a method that takes an array and returns its duplicate values. Use less than O(n^2) time.
+// input: arr = [1,2,2,4,5,5,6,7,6];
+// output: [2,5,6]
+/*
+1. Iterate through the array
+2. Check if each element in the array is found in the map -- at each initial element check, the element does not exist -- this is the else portion of the conditional
+3. When a duplicate in the array comes up in the iteration, the key will be found in the map so we know it's a duplicate -- we then push the element in the result array
+4. Return the result with all duplicates */
+function returnDuplicates(arr){
+	let result = [], map = {};
+	for(let i = 0; i < arr.length; i++){
+		if(map[arr[i]]){
+			result.push(arr[i]);
+		} else {
+			map[arr[i]] = i;
+		}
+	}
+	return result;
+}
+arr = [1,2,2,4,5,5,6,7,6];
 
 
 
