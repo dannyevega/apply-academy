@@ -1151,6 +1151,37 @@ Queue.prototype.dequeue = function(){
 
 
 
+// Finding the greatest common divisor -- this solution doesnt work for all cases, it's shitty af
+function greatestCommonDivider(firstNum, secondNum){
+	let firstResult = [], secondResult = [], i = 2, firstMap = {}, secondMap = {}, gcd;
+	while(i <= firstNum){
+		if((firstNum % i) === 0){
+			firstResult.push(i);
+			firstNum = Math.floor(firstNum / i);
+		} else {
+			i++;
+		}
+	}
+	i = 2;
+	while(i <= secondNum){
+		if((secondNum % i) === 0){
+			secondResult.push(i);
+			secondNum = Math.floor(secondNum / i);
+		} else {
+			i++;
+		}
+	}
+	for(let i = 0; i < firstResult.length; i++){
+		firstMap[firstResult[i]] = i++;
+	}
+	for(let i = 0; i < secondResult.length; i++){
+		secondMap[secondResult[i]] = i++;
+	}
+	gcd = common.reduce(function(a, b){
+		return a * b;
+	});
+	return gcd;
+}
 
 
 
