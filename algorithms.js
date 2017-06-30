@@ -1132,11 +1132,15 @@ Queue.prototype.enqueue = function(el){
 	this.queue.push(el);
 }
 Queue.prototype.dequeue = function(){
+	// only run when the temp array of Queue is empty
 	if(this.temp.length === 0){
+		// move all elements from queue array to temp array
 		while(this.queue.length > 0){
 			this.temp.push(this.queue.pop());
 		}
+		// pop off last element in temp array -- this is first element in queue array
 		this.temp.pop();
+		// push remaining elements back into queue -- first element will be removed
 		while(this.temp.length > 0){
 			this.queue.push(this.temp.pop());
 		}
