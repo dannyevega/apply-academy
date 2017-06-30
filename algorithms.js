@@ -1123,4 +1123,42 @@ arr = [1,2,2,4,5,5,6,7,6];
 
 
 
+// Implement a Queue using Stacks. You're only allowed to use the push and pop methods
+function Queue(){
+	this.queue = [];
+	this.temp = [];
+}
+Queue.prototype.enqueue = function(el){
+	this.queue.push(el);
+}
+Queue.prototype.dequeue = function(){
+	if(this.temp.length === 0){
+		while(this.queue.length > 0){
+			this.temp.push(this.queue.pop());
+		}
+		this.temp.pop();
+		while(this.temp.length > 0){
+			this.queue.push(this.temp.pop());
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
