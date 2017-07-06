@@ -1071,17 +1071,16 @@ cost = [5,6,4]
 
 
 
-// Find all of the prime factors that make up the passed in number
-// input: 18
-// output: [2,3,3]
-// reason: 2 * 3 * 3 = 18
-/*
+/* Find all of the prime factors that make up the passed in number
+input: 18
+output: [2,3,3]
+reason: 2 * 3 * 3 = 18
+
 1. we start at i = 2 because primes are natural numbers greater than 1 that has no positive divisors other than 1 and itself
 2. 2 is a prime number so we start from there -- if num % i === 0, we know its a prime factor
 3. If not, then we increment i to check if its modulus is 0
 4. Push in i if its a prime factor
-5. then set num = num / i -- continue until loop breaks
-*/
+5. then set num = num / i -- continue until loop breaks */
 function findPrimeFactors(num){
 	let result = [], i = 2;
 	while(i <= num){
