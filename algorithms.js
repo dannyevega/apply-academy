@@ -1189,13 +1189,16 @@ function greatestCommonDivider(firstNum, secondNum){
 4. If you keep finding the difference, the problem reduces to the point where the inputs are much smallers
 */
 function euclidsGCD(first, second){
+	// if our inputs are negative, convert them to positive
 	if(first < 0) { first *= -1; }
 	if(second < 0) { second *= -1; }
+	// use modulo here to reduce the larger value until second number is zero
 	while(second !== 0){
 		let temp = second;
 		second = first % second;
 		first = temp;
 	}
+	// return the non-zero number
 	return first;
 }
 
