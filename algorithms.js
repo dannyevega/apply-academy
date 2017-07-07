@@ -1201,8 +1201,29 @@ function euclidsGCD(first, second){
 	// return the non-zero number
 	return first;
 }
+/* The Euclidean Algorithm for finding GCD(A,B) is as follows:
+If A = 0 then GCD(A,B)=B, since the GCD(0,B)=B, and we can stop.
+If B = 0 then GCD(A,B)=A, since the GCD(A,0)=A, and we can stop.
 
+Example: euclidsGCD(78, 52)
 
+A=78, B=52
+A !== 0 and b !== 0
+Use modulo to find 78 % 52 = 26
+find euclidsGCD(52, 26) since euclidsGCD(78, 52)=euclidsGCD(52, 26)
+
+A=52, B=26
+A !== 0 and b !== 0
+Use modulo to find 52 % 26 = 0
+find euclidsGCD(26, 0) since euclidsGCD(52, 26)=euclidsGCD(26, 0)
+
+A=26, B=0
+A !== 0, B= 0
+euclidsGCD(26, 0)=26
+
+euclidsGCD(78, 52) = euclidsGCD(52, 26) = euclidsGCD(26, 0) = 26
+euclidsGCD(78, 52) = 26
+*/
 
 
 
