@@ -107,7 +107,7 @@ mergeTwoSortedArrays([1,3,5], [2,4,6,8,10]);
 - then, compare these single element arrays to each other and merge them together in ascending order
 */
 function mergeSort(array){
-	var middle, left, right, result = [], leftCount = 0, rightCount = 0;;
+	var middle, left, right, result = [], leftCount = 0, rightCount = 0;
 
 	if(array.length < 2){
 		return array;
@@ -299,6 +299,20 @@ function partition(arr, left, right){
     return partitionIndex;
 }
 
+// rather using the swap function, we can make use of ES6 destructuring assignment which basically does the swapping for you
+function partition(arr, left, right){
+    let pivot = arr[right], partitionIndex = left;
+
+    for(var i = left; i < right; i++){
+        if(arr[i] < pivot){
+            [arr[i], arr[partitionIndex]] = [arr[partitionIndex], arr[i]];
+            partitionIndex++;
+        }
+    }
+    [arr[right], arr[partitionIndex]] = [arr[partitionIndex], arr[right]];
+    return partitionIndex;
+}
+
 function quickSort(arr, left = 0, right = arr.length - 1){
     let partitionIndex;
     if(left < right){
@@ -308,7 +322,6 @@ function quickSort(arr, left = 0, right = arr.length - 1){
     }
     return arr;
 }
-
 
 
 
