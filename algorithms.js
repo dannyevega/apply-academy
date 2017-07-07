@@ -1182,6 +1182,23 @@ function greatestCommonDivider(firstNum, secondNum){
 	return gcd;
 }
 
+/* Euclids Algorithm - Decrease and Conquer
+1. this algorithm uses a conquer to converge the Greatest Common Divisor faster than the prime factorization
+2. The basis -- the GCD of two numbers must be a factor of its difference as well
+3. Instead of finding all the divisors of prime factors of two really large values, find the difference between them to reduce the problem to smaller inputs
+4. If you keep finding the difference, the problem reduces to the point where the inputs are much smallers
+*/
+function euclidsGCD(first, second){
+	if(first < 0) { first *= -1; }
+	if(second < 0) { second *= -1; }
+	while(second !== 0){
+		let temp = second;
+		second = first % second;
+		first = temp;
+	}
+	return first;
+}
+
 
 
 
