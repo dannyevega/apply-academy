@@ -1,4 +1,15 @@
+// SELECTION SORT
+/* Loop through the entire array and find one minimum value at a time and use that to build up a sorted array
+You'll be using multiple pointers in order to keep track of your current element, the current minimum value and sorted portion of the array
 
+1. Start with the first element in the array and initially set it equal to the minimum index
+2. Compare the value at minIdx with each subsequent element in the array
+3. If you come across a smaller value than the current minIdx, set that value equal to the current minIdx
+4. Once you've iterated through the entire array, swap the values
+5. At this point, the value on the left you swapped with will be sorted and the reminainig elements will still need to be traversed
+6. Return array once you've completed the pass
+
+*/
 function selectionSort(arr){
 	for(let i = 0; i < arr.length; i++){
 		let minIdx = i;
