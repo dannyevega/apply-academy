@@ -1,3 +1,18 @@
+
+function selectionSort(arr){
+	for(let i = 0; i < arr.length; i++){
+		let minIdx = i;
+		for(let j = i + 1; j < arr.length; j++){
+			if(arr[j] < arr[minIdx]){
+				minIdx = j;
+			}
+		}
+		[arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+	}
+	return arr;
+}
+arr = [23, 42, 4, 16, 8, 15];
+
 // BUBBLE SORT
 /*
 1. Iterate through the length of the array for outer loop
