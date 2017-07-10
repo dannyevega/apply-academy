@@ -1229,6 +1229,39 @@ euclidsGCD(78, 52) = 26
 
 
 
+/* Given a digit string, return all possible letter combinations that the number could represent.
+
+A mapping of digit to letters (just like on the telephone buttons) is given below.
+
+Input:Digit string "23"
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]. */
+function telephone(str){
+	str = str.split("");
+	let values = [], result = [], map = {
+		2: "abc",
+		3: "def",
+		4: "ghi",
+		5: "jkl",
+		6: "mno",
+		7: "pqrs",
+		8: "tuv",
+		9: "wxyz"
+	}, nums = str.map(function(el){
+		return Number(el);
+	});
+	for(let i = 0; i < nums.length; i++){
+		if(map[nums[i]]){
+			values.push(map[nums[i]]);
+		}
+	}
+	let first = values[0], second = values[1];
+	for(let i = 0; i < first.length; i++){
+		for(let j = 0; j < second.length; j++){
+			result.push(first[i] + second[j]);
+		}
+	}
+	return result;
+}
 
 
 
