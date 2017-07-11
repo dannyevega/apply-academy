@@ -1234,7 +1234,16 @@ euclidsGCD(78, 52) = 26
 A mapping of digit to letters (just like on the telephone buttons) is given below.
 
 Input:Digit string "23"
-Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]. */
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+
+STEPS:
+1. Split string digit into array of two strings i.e. "23" --> ["2", "3"]
+2. Create variables you'll be using: map for values, nums array to hold converted stings into digits, result and letter values of each digit
+3. Once you have nums array [2, 3], iterate through map and push values of each of those digits into the valeus array
+4. Values will now hold the letter valeus of each digit --> ["abc", "def"]
+5. Nested for loop allows us to find all combinations of letters
+6. Return result
+*/
 function telephone(str){
 	str = str.split("");
 	let values = [], result = [], map = {
