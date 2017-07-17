@@ -1,44 +1,4 @@
-// INSERTION SORT
-function insertionSort(arr){
-	for(let i = 0; i < arr.length; i++){
-		let temp = arr[i];
-		let j = i - 1;
-		while(j >= 0 && arr[j] > temp){
-			arr[j + 1] = arr[j];
-			j--;
-		}
-		arr[j + 1] = temp;
-	}
-	return arr;
-}
-
-// SELECTION SORT
-/* Loop through the entire array and find one minimum value at a time and use that to build up a sorted array
-You'll be using multiple pointers in order to keep track of your current element, the current minimum value and sorted portion of the array
-
-1. Start with the first element in the array and initially set it equal to the minimum index
-2. Compare the value at minIdx with each subsequent element in the array
-3. If you come across a smaller value than the current minIdx, set that value equal to the current minIdx
-4. Once you've iterated through the entire array, swap the values
-5. At this point, the value on the left you swapped with will be sorted and the reminainig elements will still need to be traversed
-6. Return array once you've completed the pass
-
-*/
-function selectionSort(arr){
-	for(let i = 0; i < arr.length; i++){
-		let minIdx = i;
-		for(let j = i + 1; j < arr.length; j++){
-			if(arr[j] < arr[minIdx]){
-				minIdx = j;
-			}
-		}
-		[arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
-	}
-	return arr;
-}
-arr = [23, 42, 4, 16, 8, 15];
-
-// BUBBLE SORT
+// BUBBLE SORT -- unstable sort
 /*
 1. Iterate through the length of the array for outer loop
 2. Iterate through lenght of array - 1 for inner loop -- works with length or length - 1 but we dont need to go through the whole array because the last element should be the largest
@@ -106,6 +66,80 @@ function bubbleSort(arr){
 }
 arr = [1,2,3]
 arr = [5,3,2,9,6]
+
+
+
+
+
+// SELECTION SORT -- unstable sort
+/* Loop through the entire array and find one minimum value at a time and use that to build up a sorted array
+You'll be using multiple pointers in order to keep track of your current element, the current minimum value and sorted portion of the array
+
+1. Start with the first element in the array and initially set it equal to the minimum index
+2. Compare the value at minIdx with each subsequent element in the array
+3. If you come across a smaller value than the current value at minIdx, update minIdx to the index of the lower value
+4. Once you've iterated through the entire array, swap the values
+5. At this point, the value on the left you swapped with will be sorted and the reminainig elements will still need to be traversed
+6. Return array once you've completed the pass
+
+*/
+function selectionSort(arr){
+	for(let i = 0; i < arr.length; i++){
+		let minIdx = i;
+		for(let j = i + 1; j < arr.length; j++){
+			if(arr[j] < arr[minIdx]){
+				minIdx = j;
+			}
+		}
+		[arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+	}
+	return arr;
+}
+arr = [23, 42, 4, 16, 8, 15];
+
+
+
+
+
+/* INSERTION SORT -- stable sort
+1 .Doesn't swap any values in the array which would lead to an unstable sort.
+2. Instead, Insertion sort picks out individual items and inserts them into the correct spot in the array
+3. This algorithm works by separating an array into two sections -- a sorted and unsorted list
+4. Initially, the entire array is unsorted and the sorted section is empty
+5. We need to add a value to the sorted section -- we use the first item in the array because a list of 1 item is sorted
+6. THEN, for each item in the unsorted section we:
+
+PROCESS:
+Get a list of unsorted numbers
+Set a marker for the sorted section after the first number in the list
+Repeat steps 4 through 6 until the unsorted section is empty
+   Select the first unsorted number
+   Swap this number to the left until it arrives at the correct sorted position
+   Advance the marker to the right one position
+Stop
+
+
+Walkthrough:
+1. Start with the first element in the array as the sorted section arr[0] -- > 5
+2. Compare the next value 1 to the sorted element -- if it's less than, move that element over to the left
+3. Now, we have two elements in the sorted list [1, 5, 8, 4, 3]
+4. Now, compare 8 to 5 -- it's greater so we don't do anything
+5. Now, 4 is less than 5 so we move it over --> 1, 4, 5, 8, 3
+6. Now, we compare 3 and it's less than so we move over --> 1,4,5,8,3
+*/
+function insertionSort(arr){
+	for(let i = 0; i < arr.length; i++){
+		let temp = arr[i];
+		let j = i - 1;
+		while(j >= 0 && arr[j] > temp){
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = temp;
+	}
+	return arr;
+}
+arr = [5, 1, 8, 4, 3];
 
 
 
@@ -362,68 +396,3 @@ function quickSort(arr, left = 0, right = arr.length - 1){
     }
     return arr;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function selectionSort(arr){
-	let changed = false;
-	for(let i = 0; i < arr.length; i++){
-		let minIdx = i;
-		for(let j = i + 1; j < arr.length; j++){
-			if(arr[j] < arr[minIdx]){
-				changed = true;
-				minIdx = j;
-			}
-		}
-		if(!changed){
-			return arr;
-		}
-		[arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
-	}
-	return arr;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
