@@ -8,6 +8,7 @@ function BST(){
 	this.root = null;
 }
 
+// Use of helper function 'search' for recursive calling
 BST.prototype.add = function(data){
 	let current = this.root;
 	if(!current){
