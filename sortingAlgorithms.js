@@ -1,3 +1,17 @@
+// INSERTION SORT
+function insertionSort(arr){
+	for(let i = 0; i < arr.length; i++){
+		let temp = arr[i];
+		let j = i - 1;
+		while(j >= 0 && arr[j] > temp){
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = temp;
+	}
+	return arr;
+}
+
 // SELECTION SORT
 /* Loop through the entire array and find one minimum value at a time and use that to build up a sorted array
 You'll be using multiple pointers in order to keep track of your current element, the current minimum value and sorted portion of the array
@@ -257,7 +271,7 @@ function quickSort(arr){
 	return quickSort(lesser).concat(pivot).concat(quickSort(greater));
 }
 
-quicksort([4,2,6,5,1,3]);
+quickSort([4,2,6,5,1,3]);
 /*
 Step 1:
 arr = [4,2,6,5,1,3]
@@ -348,6 +362,64 @@ function quickSort(arr, left = 0, right = arr.length - 1){
     }
     return arr;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function selectionSort(arr){
+	let changed = false;
+	for(let i = 0; i < arr.length; i++){
+		let minIdx = i;
+		for(let j = i + 1; j < arr.length; j++){
+			if(arr[j] < arr[minIdx]){
+				changed = true;
+				minIdx = j;
+			}
+		}
+		if(!changed){
+			return arr;
+		}
+		[arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+	}
+	return arr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
