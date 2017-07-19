@@ -140,10 +140,13 @@ function insertionSort(arr){
 	return arr;
 }
 arr = [5, 1, 8, 4, 3];
-
-
-
-
+[5, 1, 8, 4, 3];
+[1, 5, 8, 4, 3];
+[1, 5, 4, 8, 3];
+[1, 4, 5, 8, 3];
+[1, 4, 5, 3, 8];
+[1, 4, 3, 5, 8];
+[1, 3, 4, 5, 8];
 
 // MULTIPLE POINTERS
 
@@ -281,7 +284,7 @@ function mergeSortIterative(arr){
 
 
 /* QUICK SORT
-basic solution for quicksort algorithm
+basic solution for quickSort algorithm
 1. divide and conquer algorithm -- this solution chooses a pivot value, then iterates through the array pushing all elements less than the pivot value into the lesser array and all values greater than the pivot value into the greater array
 2. it then rcursively calls the quickSort function on the less side and greater side
 3. once the stack completes for each of those sides, the lesser array will be sorted as well as the greater side
