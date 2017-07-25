@@ -77,6 +77,7 @@ BST.prototype.find = function(data){
 	return current;
 }
 
+// recursive function here also allows us to continue checking where to remove the node
 BST.prototype.remove = function(data){
 	let removeNode = function(node, data){
 		if(node === null){
