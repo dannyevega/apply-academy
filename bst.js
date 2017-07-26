@@ -49,6 +49,8 @@ bst.add(8)
 bst.add(1)
 bst.add(9)
 
+// Everything starts at the root
+// Continues checking while current.left exists -- once its no longer true, you return the current.data which will be the left most node
 BST.prototype.findMin = function(){
 	let current = this.root;
 	while(current.left){
@@ -57,6 +59,8 @@ BST.prototype.findMin = function(){
 	return current.data;
 }
 
+// Everything starts at the root
+// Continues checking while current.right exists -- once its no longer true, you return the current.data which will be the right most node
 BST.prototype.findMax = function(){
 	let current = this.root;
 	while(current.right){
@@ -65,6 +69,11 @@ BST.prototype.findMax = function(){
 	return current.data;
 }
 
+// Everything starts at the root
+// Similar process -- first continue checking while the data you're looking for is not the current node
+// If the data you're looking for is less than, current = current.left
+// If the data you're looking for is greater than, current = current.right
+// Once current.data = data, you can return the current node
 BST.prototype.find = function(data){
 	let current = this.root;
 	while(current.data !== data){
