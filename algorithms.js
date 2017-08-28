@@ -1305,3 +1305,29 @@ function shapeArea(n) {
     return area;
 }
 
+
+
+
+
+// Find the difference between two arrays -- Check two arrays and return a new array that contains only the items that are not in either of the original arrays.
+
+// Example:
+// first = ["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"]
+// second = ["diorite", "andesite", "grass", "dirt", "dead shrub"]
+// should return "pink wool"
+function diffArray(arr1, arr2){
+	var newArr = [];
+
+	function checkDiff(first, second){
+		for(var i = 0; i < first.length; i++){
+			if(second.indexOf(first[i]) === -1){
+				newArr.push(first[i]);
+			}
+		}
+	}
+
+	checkDiff(arr1, arr2);
+	checkDiff(arr2, arr1);
+
+	return newArr;
+}
