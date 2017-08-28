@@ -95,7 +95,7 @@ function selectionSort(arr){
 	}
 	return arr;
 }
-arr = [23, 42, 4, 16, 8, 15];
+selectionSort([23, 42, 4, 16, 8, 15]);
 
 
 
@@ -125,7 +125,7 @@ Walkthrough:
 3. Now, we have two elements in the sorted list [1, 5, 8, 4, 3]
 4. Now, compare 8 to 5 -- it's greater so we don't do anything
 5. Now, 4 is less than 5 so we move it over --> 1, 4, 5, 8, 3
-6. Now, we compare 3 and it's less than so we move over --> 1,4,5,8,3
+6. Now, we compare 3 and it's less than so we move over --> 1,3,4,5,8
 */
 function insertionSort(arr){
 	for(let i = 0; i < arr.length; i++){
@@ -399,3 +399,4 @@ function quickSort(arr, left = 0, right = arr.length - 1){
     }
     return arr;
 }
+
