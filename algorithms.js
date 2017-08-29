@@ -489,6 +489,19 @@ function caesarCipher(string, shift){
 	return result;
 }
 
+function caesarCipher(str, shift){
+	var letters = "abcdefghijklmnopqrstuvwxyz", result = "";
+	for(var i = 0; i < str.length; i++){
+		if(str[i] === " "){
+			result += str[i];
+		} else {
+			var currentIndex = letters.indexOf(str[i]);
+			var shiftOver = (currentIndex + shift) % 26;
+			result += letters[shiftOver];
+		}
+	}
+	return result;
+}
 
 
 
