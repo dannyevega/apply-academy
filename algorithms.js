@@ -169,20 +169,6 @@ Sample Output:
 0 1 2 3 4 5 6 7
 
 function fibs(num){
-	var fibs = [1, 1];
-	function helper(index){
-		if(index === num){
-			return;
-		} else {
-			fibs[index] = fibs[index - 2] + fibs[index - 1];
-			helper(index + 1);
-		}
-	}
-	helper(2);
-	return fibs;
-}
-
-function fibs(num){
 	var fibonacci = [0, 1];
 	if(num === 0) return [];
 	if(num === 1) return [0];
@@ -265,6 +251,22 @@ function isPalindrome(str){
 	return helper(0, str.length - 1, str.split(""));
 }
 isPalindrome("racecar")
+
+function isPalindrome(str){
+	function helper(firstIdx, lastIdx, string){
+		if(lastIdx < firstIdx){
+			return true;
+		} else {
+			if(string[firstIdx] === string[lastIdx]){
+				return helper(firstIdx + 1, lastIdx - 1, string);
+			} else {
+				return false;
+			}
+		}
+	}
+	return helper(0, str.length - 1, str.split(""));
+}
+
 
 
 
