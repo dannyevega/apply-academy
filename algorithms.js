@@ -753,7 +753,7 @@ function sortBits(arr){
 	}
 	return arr;
 }
-
+[0, 1, 1, 0, 1, 1, 1, 0]
 
 
 
@@ -1359,4 +1359,46 @@ function diffArray(arr1, arr2){
 	checkDiff(arr2, arr1);
 
 	return newArr;
+}
+
+
+
+
+
+/* Given an array of integers (positive and negative) find the largest contiguous subsum (sum of a subarray).
+
+Examples:
+> lcs([5, 3, -7, 6]) // = 8 (5+3)
+> lcs([1,2,3,4,5]) // = 15 (1+2+3+4+5)
+> lcs([1,-1,1,-1,1]) // = 1 (either 1 or 3 or 5 first elements)
+> lcs([-1, -2, -3, -4, -5]) // = -1
+
+*/
+function largestContinguousSubsum(arr){
+	var largest = arr[0] || 0;
+	for(var i = 0; i < arr.length; i++){
+		var current = arr[i];
+		for(var j = i + 1; j <= arr.length; j++){
+			current += arr[j];
+			if(current > largest){
+				largest = current;
+			}
+		}
+	}
+	return largest;
+}
+
+function largestContinguousSubsum(arr){
+	var current = 0;
+	var largestSum = arr[0] || 0;
+	for(var i = 0; i < arr.length; i++){
+		current += arr[i];
+		if(current > largestSum){
+			largestSum = current;
+		}
+		if(current < 0){
+			current = 0;
+		}
+	}
+	return largestSum;
 }
