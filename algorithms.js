@@ -1402,3 +1402,30 @@ function largestContinguousSubsum(arr){
 	}
 	return largestSum;
 }
+
+
+
+
+
+/* productify -- Given an array of numbers, return array of products of all other numbers (no division)
+
+input: [1,2,3]
+output: [6,3,2]
+
+*/
+
+function productify(arr){
+	var productsBelow = [], productsAbove = [], result = [], pb = 1, pa = 1;
+	for(var i = 0; i < arr.length; i++){
+		productsBelow[i] = pb;
+		pb *= arr[i];
+	}
+	for(var i = arr.length - 1; i >= 0; i--){
+		productsAbove[i]= pa;
+		pa *= arr[i];
+	}
+	for(var i = 0; i < arr.length; i++){
+		result[i] = productsBelow[i] * productsAbove[i];
+	}
+	return result;
+}
