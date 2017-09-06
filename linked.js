@@ -31,7 +31,8 @@ LinkedList.prototype.add = function(value){
 
 LinkedList.prototype.addPosition = function(value, position){
 	var current = this.head, prev = null, count = 1, node = new Node(value);
-	if(!current){
+	if(position === 0){
+		node.next = this.head;
 		this.head = node;
 	} else {
 		while(count < position){
@@ -51,17 +52,69 @@ linky.add(4);
 linky.add(6);
 linky.add(8);
 
+function errorMessage(){
+	var message = {failure: "Linked List is empty."};
+	throw new Error(message.failure);
+}
+
+function nodeNotFoundMessage(){
+	var message = {failure: "Node is not found in this list."};
+	throw new Error(message.failure);
+}
+
 LinkedList.prototype.deleteStart = function(){
 	var current = this.head;
-	this.head = current.next
+	if(this.length === 0){
+		errorMessage();
+	} else {
+		this.head = current.next;
+		this.length--;
+	}
+}
+
+LinkedList.prototype.delete = function(){
+	var current = this.head, prev = null;
+	if(this.length === 0){
+		errorMessage();
+	} else {
+		while(current.next){
+			prev = current;
+			current = current.next;
+		}
+		prev.next = null;
+	}
 	this.length--;
 }
 
+LinkedList.prototype.contains = function(value){
+	var current = this.head;
+	while(current){
+		if(current.value === value){
+			return true;
+		}
+		current = current.next;
+	}
+	return false;
+}
 
-
-
-
-
+LinkedList.prototype.deleteValue = function(value){
+	var current = this.head, prev = null;
+	if(this.length === 0){
+		errorMessage();
+	}
+	if(this.contains(value) === false){
+		nodeNotFoundMessage();
+	} else if(current.value === value){
+		this.head = current.next;
+	} else {
+		while(current.value !== value){
+			prev = current;
+			current = current.next;
+		}
+		prev.next = current.next;
+	}
+	this.length--;
+}
 
 
 
