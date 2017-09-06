@@ -116,8 +116,20 @@ LinkedList.prototype.deleteValue = function(value){
 	this.length--;
 }
 
-
-
+LinkedList.prototype.deleteNodeAt = function(position){
+	var current = this.head, prev = null, count = 1;
+	if(position === 1){
+		this.head = current.next;
+	} else {
+		while(count < position){
+			prev = current;
+			current = current.next;
+			count++;
+		}
+		prev.next = current.next;
+	}
+	this.length--;
+}
 
 
 
