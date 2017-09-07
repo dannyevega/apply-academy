@@ -1,12 +1,12 @@
-// Stack time complexity
-// ╔═══════════╦═════════╦════════════╗
-// ║ Algorithm ║ Average ║ Worst Case ║
-// ╠═══════════╬═════════╬════════════╣
-// ║ Space     ║ O(n)    ║ O(n)       ║
-// ║ Search    ║ O(n)    ║ O(n)       ║
-// ║ Insert    ║ O(1)    ║ O(1)       ║
-// ║ Delete    ║ O(1)    ║ O(1)       ║
-// ╚═══════════╩═════════╩════════════╝
+Stack time complexity
+╔═══════════╦═════════╦════════════╗
+║ Algorithm ║ Average ║ Worst Case ║
+╠═══════════╬═════════╬════════════╣
+║ Space     ║ O(n)    ║ O(n)       ║
+║ Search    ║ O(n)    ║ O(n)       ║
+║ Insert    ║ O(1)    ║ O(1)       ║
+║ Delete    ║ O(1)    ║ O(1)       ║
+╚═══════════╩═════════╩════════════╝
 
 // STACKS
 
@@ -28,7 +28,7 @@ for(var i = 0; i < word.length; i++){
 
 // check for palindrome
 var isPal = (word === reverse) ? true : false;
-console.log(isPal);
+// console.log(isPal);
 
 // Creating a Stack class
 function Stack(){
@@ -53,10 +53,17 @@ Stack.prototype.size = function(){
 	return this.count;
 }
 
+Stack.prototype.peek = function(){
+	return this.storage[this.count - 1];
+}
 
-
-
-
+var stack = new Stack();
+stack.push(2);
+stack.push(4);
+stack.push(6);
+console.log(stack.peek());
+console.log(stack.pop());
+console.log(stack.peek());
 
 
 
