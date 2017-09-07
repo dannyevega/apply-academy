@@ -1,12 +1,12 @@
-// Queue time complexity
-// ╔═══════════╦═════════╦════════════╗
-// ║ Algorithm ║ Average ║ Worst Case ║
-// ╠═══════════╬═════════╬════════════╣
-// ║ Space     ║ O(n)    ║ O(n)       ║
-// ║ Search    ║ O(n)    ║ O(n)       ║
-// ║ Insert    ║ O(1)    ║ O(1)       ║
-// ║ Delete    ║ O(1)    ║ O(1)       ║
-// ╚═══════════╩═════════╩════════════╝
+Queue time complexity
+╔═══════════╦═════════╦════════════╗
+║ Algorithm ║ Average ║ Worst Case ║
+╠═══════════╬═════════╬════════════╣
+║ Space     ║ O(n)    ║ O(n)       ║
+║ Search    ║ O(n)    ║ O(n)       ║
+║ Insert    ║ O(1)    ║ O(1)       ║
+║ Delete    ║ O(1)    ║ O(1)       ║
+╚═══════════╩═════════╩════════════╝
 
 // Creating a Queue class
 function Queue(){
@@ -37,18 +37,18 @@ Queue.prototype.isEmpty = function(){
 	return (this.collection.length === 0);
 }
 
-// var queue = new Queue();
-// queue.enqueue(3);
-// queue.enqueue(6);
-// queue.enqueue(9);
-// console.log(queue.print());
-// console.log("front: " + queue.front());
-// console.log("size: " + queue.size());
-// console.log(queue.isEmpty());
-// queue.dequeue();
-// console.log(queue.print());
-// console.log("front: " + queue.front());
-// console.log("size: " + queue.size());
+var queue = new Queue();
+queue.enqueue(3);
+queue.enqueue(6);
+queue.enqueue(9);
+console.log(queue.print());
+console.log("front: " + queue.front());
+console.log("size: " + queue.size());
+console.log(queue.isEmpty());
+queue.dequeue();
+console.log(queue.print());
+console.log("front: " + queue.front());
+console.log("size: " + queue.size());
 
 
 
@@ -113,6 +113,67 @@ console.log("size: " + pq.size());
 pq.enqueue(["Ron", 2]);
 console.log(pq.print());
 console.log("front: " + pq.front());
+
+
+// Implement a Queue using 2 stacks and only using push and pop methods
+function Queue(){
+	this.collection = [];
+	this.temp = [];
+}
+
+Queue.prototype.enqueue = function(value){
+	this.collection.push(value);
+}
+
+Queue.prototype.dequeue = function(){
+	if(this.temp.length === 0){
+		while(this.collection.length > 0){
+			this.temp.push(this.collection.pop());
+		}
+		this.temp.pop();
+		while(this.temp.length > 0){
+			this.collection.push(this.temp.pop());
+		}
+	}
+}
+
+Queue.prototype.print = function(){
+	console.log(this.collection);
+}
+
+var q = new Queue();
+q.enqueue("Danny");
+q.enqueue("Reymundo");
+q.enqueue("Hailey");
+q.print();
+q.dequeue();
+q.print();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
