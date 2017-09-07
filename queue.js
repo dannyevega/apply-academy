@@ -24,3 +24,15 @@ Queue.prototype.enqueue = function(value){
 Queue.prototype.dequeue = function(){
 	return this.collection.shift();
 }
+
+Queue.prototype.front = function(){
+	return this.collection[0];
+}
+
+Queue.prototype.size = function(value){
+	return this.collection.length;
+}
+
+Queue.prototype.isEmpty = function(){
+	return (this.collection.length === 0);
+}
