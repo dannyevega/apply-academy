@@ -49,7 +49,9 @@ Stack.prototype.pop = function(){
 	return result;
 }
 
-
+Stack.prototype.size = function(){
+	return this.count;
+}
 
 
 
