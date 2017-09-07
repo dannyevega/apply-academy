@@ -1,3 +1,13 @@
+Linked list time complexity
+╔═══════════╦═════════╦════════════╗
+║ Algorithm ║ Average ║ Worst Case ║
+╠═══════════╬═════════╬════════════╣
+║ Space     ║ O(n)    ║ O(n)       ║
+║ Search    ║ O(n)    ║ O(n)       ║
+║ Insert    ║ O(1)    ║ O(1)       ║
+║ Delete    ║ O(1)    ║ O(1)       ║
+╚═══════════╩═════════╩════════════╝
+
 function Node(value){
 	this.value = value;
 	this.next = null;
@@ -62,6 +72,30 @@ function nodeNotFoundMessage(){
 	throw new Error(message.failure);
 }
 
+LinkedList.prototype.contains = function(value){
+	var current = this.head;
+	while(current){
+		if(current.value === value){
+			return true;
+		}
+		current = current.next;
+	}
+	return false;
+}
+
+LinkedList.prototype.returnNodeAt = function(position){
+	var current = this.head, length = this.length, count = 1;
+	if(!current){
+		errorMessage();
+	} else {
+		while(count < position){
+			current = current.next;
+			count++;
+		}
+		return current;
+	}
+}
+
 LinkedList.prototype.deleteStart = function(){
 	var current = this.head;
 	if(this.length === 0){
@@ -86,16 +120,6 @@ LinkedList.prototype.delete = function(){
 	this.length--;
 }
 
-LinkedList.prototype.contains = function(value){
-	var current = this.head;
-	while(current){
-		if(current.value === value){
-			return true;
-		}
-		current = current.next;
-	}
-	return false;
-}
 
 LinkedList.prototype.deleteValue = function(value){
 	var current = this.head, prev = null;
