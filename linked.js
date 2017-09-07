@@ -130,12 +130,3 @@ LinkedList.prototype.deleteNodeAt = function(position){
 	}
 	this.length--;
 }
-
-
-
-
-
-
-
-
-
