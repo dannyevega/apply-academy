@@ -116,5 +116,5 @@ BST.prototype.remove = function(data){
 			return node;
 		}
 	}
-	this.root = removeNode(this.root, data);
+	return removeNode(this.root, data);
 }

@@ -1,3 +1,10 @@
+/*
+A linked list is one of the most basic data structures. It is often compared to an array since many other data structures can be implemented with either an array or a linked list. They each have advantages and disadvantages.
+
+A linked list consists of a group of nodes which together represent a sequence. Each node contains two things: the actual data being stored (which can be basically any type of data) and a pointer (or link) to the next node in the sequence. There are also doubly linked lists where each node has a pointer to both the next item and the previous item in the list.
+
+The most basic operations in a linked list are adding an item to the list, deleting an item from the list, and searching the list for an item.
+
 Linked list time complexity
 ╔═══════════╦═════════╦════════════╗
 ║ Algorithm ║ Average ║ Worst Case ║
@@ -7,6 +14,8 @@ Linked list time complexity
 ║ Insert    ║ O(1)    ║ O(1)       ║
 ║ Delete    ║ O(1)    ║ O(1)       ║
 ╚═══════════╩═════════╩════════════╝
+
+*/
 
 function Node(value){
 	this.value = value;

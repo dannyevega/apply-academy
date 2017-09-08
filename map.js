@@ -1,3 +1,12 @@
+/*
+A map is a data structure that stores data in key / value pairs where every key is unique. A map is sometimes called an associative array or dictionary. It is often used for fast look-ups of data. Maps allow the following things:
+
+the addition of a pair to the collection
+the removal of a pair from the collection
+the modification of an existing pair
+the lookup of a value associated with a particular key
+*/
+
 // Creating Map data structure
 function Map(){
 	this.collection = {};

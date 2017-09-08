@@ -1,3 +1,8 @@
+/*
+A queue is considered FIFO (First In First Out) to demonstrate the way it accesses data. This means that once a new element is added, all elements that were added before have to be removed before the new element can be removed.
+
+A queue has just two main operations: enqueue and dequeue. Enqueue means to insert an item into the back of the queue and dequeue means removing the front item.
+
 Queue time complexity
 ╔═══════════╦═════════╦════════════╗
 ║ Algorithm ║ Average ║ Worst Case ║
@@ -7,6 +12,7 @@ Queue time complexity
 ║ Insert    ║ O(1)    ║ O(1)       ║
 ║ Delete    ║ O(1)    ║ O(1)       ║
 ╚═══════════╩═════════╩════════════╝
+*/
 
 // Creating a Queue class
 function Queue(){
