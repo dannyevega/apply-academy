@@ -8,24 +8,23 @@ function BST(){
 	this.root = null;
 }
 
-// Use of helper function 'search' for recursive calling
 BST.prototype.add = function(data){
-	let current = this.root;
+	let current = this.root, node = new Node(data);;
 	if(!current){
-		this.root = new Node(data);
+		this.root = node;
 		return;
 	} else {
 		let search = function(current){
 			if(data < current.data){
 				if(current.left === null){
-					current.left = new Node(data);
+					current.left = node;
 					return;
 				} else {
 					return search(current.left);
 				}
 			} else if (data > current.data){
 				if(current.right === null){
-					current.right = new Node(data);
+					current.right = node;
 					return;
 				} else {
 					return search(current.right);
