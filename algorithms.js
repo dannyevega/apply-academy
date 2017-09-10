@@ -1136,7 +1136,6 @@ function isPrime(num){
 
 
 
-
 // Write a method that takes an array and returns its duplicate values. Use less than O(n^2) time.
 // input: arr = [1,2,2,4,5,5,6,7,6];
 // output: [2,5,6]
