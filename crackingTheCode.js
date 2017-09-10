@@ -71,6 +71,25 @@ function uniqueChars(str){
 uniqueChars("hello") // should return false
 uniqueChars("about") // should return true
 
+function findAllPermutations(str){
+	let result = [];
+
+	if(str.length === 1){
+		result.push(str);
+		return result;
+	}
+
+	for(let i = 0; i < str.length; i++){
+		let firstChar = str[i];
+		let remainingChars= str.slice(0, i) + str.slice(i + 1);
+		let innerPerms = findAllPermutations(remainingChars);
+		for(let j = 0; j < innerPerms.length; j++){
+			result.push(firstChar + innerPerms[j]);
+		}
+	}
+	return result;
+}
+
 
 
 
