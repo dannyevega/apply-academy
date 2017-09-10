@@ -58,9 +58,18 @@ function findPairs(arr, diff){
 }
 findPairs([1,7,5,9,2,12,3], 2);
 
-
-
-
+function uniqueChars(str){
+	let map = {};
+	for(var i = 0; i < str.length; i++){
+		if(map[str[i]]){
+			return false;
+		}
+		map[str[i]] = i;
+	}
+	return true;
+}
+uniqueChars("hello") // should return false
+uniqueChars("about") // should return true
 
 
 
