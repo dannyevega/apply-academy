@@ -157,6 +157,22 @@ function permutationTwoStrings(str1, str2){
 	return false;
 }
 
+// given a string, turn it into a URL with "%20" in place of each space
+// input: "Mr John Smith    "
+// output: "Mr%20John%20Smith"
+function URLify(str){
+	let result = "", split, newChar;
+	str = str.trim();
+	split = str.split(" ");
+	for(let i = 0; i < split.length; i++){
+		newChar = split[i] + "%20";
+		if(split[i] === split[split.length - 1]){
+			newChar = split[i];
+		}
+		result += newChar;
+	}
+	return result;
+}
 
 
 
