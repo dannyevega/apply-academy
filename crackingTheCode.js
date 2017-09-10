@@ -72,25 +72,57 @@ uniqueChars("hello") // should return false
 uniqueChars("about") // should return true
 
 function findAllPermutations(str){
+	// result array
 	let result = [];
 
+	// this is our base case -- since were using recursion, it will always return one single letter to be concatanated to the rest -- this will continue until each level falls off the stack
 	if(str.length === 1){
 		result.push(str);
 		return result;
 	}
 
+	// iterate through the length of the string
 	for(let i = 0; i < str.length; i++){
+		// hold the position of the first character
 		let firstChar = str[i];
+		// find the remaining characters
 		let remainingChars= str.slice(0, i) + str.slice(i + 1);
+		// recursively call the characters til it gets broken down to one character and can execute at each stack
 		let innerPerms = findAllPermutations(remainingChars);
+		// now, well have our first character and can concatanate with each other letter --> "a" + "bc", "a" + "cb"
 		for(let j = 0; j < innerPerms.length; j++){
 			result.push(firstChar + innerPerms[j]);
 		}
 	}
+	// return the result
 	return result;
 }
 
-
+// first call
+str = "abc"
+firstChar = "a"
+remainingChars = "bc"
+innerPerms = findAllPermutations("bc")
+// second call
+innerPerms = findAllPermutations("bc")
+firstChar = "b"
+remainingChars = "c"
+innerPerms = findAllPermutations("c")
+// third call
+innerPerms = findAllPermutations("c") // --> return ["c"]
+// back to second call
+// pushes "bc" in inner for loop then goes to back to outer for loop
+firstChar = "c"
+remainingChars = "b"
+innerPerms = findAllPermutations("b")
+// fourth call
+innerPerms = findAllPermutations("b") // --> returns ["b"]
+// back to second call
+// pushes "cb" in inner for loop then goes to back to outer for loop
+// back to inner for loop in first call
+"a" + "bc" --> "abc"
+"a" + "cb" --> "acb"
+// then moves to the next character "b" and does the same for each character
 
 
 
