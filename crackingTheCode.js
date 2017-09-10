@@ -124,7 +124,38 @@ innerPerms = findAllPermutations("b") // --> returns ["b"]
 "a" + "cb" --> "acb"
 // then moves to the next character "b" and does the same for each character
 
+function findAllPermutations(str){
+	let result = [];
 
+	if(str.length === 1){
+		result.push(str);
+		return result;
+	}
+
+	for(let i = 0; i < str.length; i++){
+		let firstChar = str[i];
+		let remainingChars= str.slice(0, i) + str.slice(i + 1);
+		let innerPerms = findAllPermutations(remainingChars);
+		for(let j = 0; j < innerPerms.length; j++){
+			result.push(firstChar + innerPerms[j]);
+		}
+	}
+	return result;
+}
+
+// checks to see if second string is a permutation of the first
+function permutationTwoStrings(str1, str2){
+	let map = {}, result = findAllPermutations(str1);
+	for(let i = 0; i < result.length; i++){
+		map[result[i]] = i;
+	}
+	for(let key in map){
+		if(str2 === key){
+			return true;
+		}
+	}
+	return false;
+}
 
 
 
