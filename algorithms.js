@@ -1470,6 +1470,52 @@ function twoSum(nums, target){
 
 
 
+function twoSum(arr, target){
+	let map = {};
+	for(let i = 0; i < arr.length; i++){
+		let current = arr[i];
+		let difference = target - current;
+		if(map[difference] === undefined){
+			map[nums[i]] = i;
+			continue;
+		}
+		return [map[difference], i];
+	}
+}
+[2,11,7,15], 9
+
+
+
+
+function twoSum(arr, target){
+	let map = {}, difference, current;
+	for(let i = 0; i < arr.length; i++){
+		current = arr[i], difference = target - current;
+		if(map[difference] === undefined){
+			map[current] = i;
+			continue;
+		}
+		return [map[difference], i];
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
