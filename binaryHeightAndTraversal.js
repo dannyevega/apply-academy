@@ -4,6 +4,7 @@ Binary height just means the distance from the root node to the furthest down le
 DFS --> explore the root nodes before the leaf nodes -- goes down as far as possible along each branch before backtracking
 BFS -- > explore the root nodes -- explores all the nodes in a given tree and neighbor nodes first before moving to the next level neighbors.
 */
+// min height finds the distance from the root node to the first leaf nodes WITHOUT two children
 BST.prototype.findMinHeight = function(node = this.root){
 	if(node === null){
 		return -1;
@@ -17,6 +18,7 @@ BST.prototype.findMinHeight = function(node = this.root){
 	}
 }
 
+// max height finds the distance from the root node down to the furthest possible node
 BST.prototype.findMaxHeight = function(node = this.root){
 	if(node === null){
 		return -1;
