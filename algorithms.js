@@ -1438,3 +1438,44 @@ function productify(arr){
 	}
 	return result;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+function twoSum(nums, target){
+	let map = {};
+	for(let i = 0; i < nums.length; i++){
+		let elem = target - nums[i];
+		if(map[elem] === undefined){
+			map[nums[i]] = i;
+			continue;
+		}
+		return [map[elem], i];
+	}
+}
+[2,11,7,15], 9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
