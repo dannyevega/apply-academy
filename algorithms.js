@@ -1500,7 +1500,25 @@ function twoSum(arr, target){
 }
 
 
-
+// fibonacci using memoization
+var fibonacci = (function(){
+	let memo = {};
+	function helper(n){
+		let value;
+		if(n in memo){
+			value = memo[n];
+		} else {
+			if(n === 0 || n === 1){
+				value = n;
+			} else {
+				value = fibonacci(n - 2) + fibonacci(n - 1);
+				memo[n] = value;
+			}
+		}
+		return value;
+	}
+	return helper;
+})();
 
 
 
