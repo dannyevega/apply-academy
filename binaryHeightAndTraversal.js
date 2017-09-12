@@ -92,3 +92,34 @@ BST.prototype.postOrderTraversal = function(){
 	}
 }
 // output --> [1, 2, 4, 3, 6, 9, 8, 7, 5]
+
+BST.prototype.breadthFirst = function(){
+	let head = this.root, result = [], queue = [], node;
+	if(head !== null){
+		queue.push(head);
+		while(queue.length > 0){
+			node = queue.shift();
+			result.push(node.data);
+			if(node.left !== null){
+				queue.push(node.left);
+			}
+			if(node.right !== null){
+				queue.push(node.right);
+			}
+		}
+		return result;
+	} else {
+		return null;
+	}
+}
+// output --> [5, 3, 7, 2, 4, 6, 8, 1, 9]
+
+
+
+
+
+
+
+
+
+
