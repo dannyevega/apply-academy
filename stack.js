@@ -162,5 +162,5 @@ Stack.prototype.contains = function(val) {
 // Time complexity: O(n);
 
 Stack.prototype.getMin = function() {
-	return Object.values(min)[Object.values(min).length - 1];
+	return Object.values(this.min)[Object.values(this.min).length - 1];
 };
