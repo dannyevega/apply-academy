@@ -77,6 +77,58 @@ console.log(stack.peek());
 
 
 
+function Stack(){
+	this.count = 0;
+	this.storage = [];
+}
+
+Stack.prototype.push = function(val){
+	this.storage[this.count] = val;
+	this.count++;
+}
+
+Stack.prototype.pop = function(){
+	let result = this.storage.splice(this.storage.length - 1, 1);
+	this.count--;
+	return result;
+}
+
+Stack.prototype.size = function(){
+	return this.count;
+}
+
+Stack.prototype.peek = function(){
+	return this.storage[this.count - 1];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
