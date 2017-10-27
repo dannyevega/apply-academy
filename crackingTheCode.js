@@ -175,6 +175,61 @@ function URLify(str){
 }
 
 
+// Time complexity: O(N^2)
+function findSubArray(arr, target){
+	for(let i = 0; i < arr.length; i++){
+		let current = arr[i];
+		for(let j = i + 1; j <= arr.length; j++){
+			if(current === target){
+				let idx = j - 1;
+				return "Sum found between indices " + i + " and " + idx;
+			}
+			if(current > target){
+				break;
+			}
+			current += arr[j];
+		}
+	}
+	return "No subarray found";
+}
+arr = [20, 1, 4, 3, 10, 6], 5;
+
+function findSubArray(arr, target){
+	for(let i = 0; i < arr.length; i++){
+		let currentSum = arr[i];
+		for(let j = i + 1; j <= arr.length; j++){
+			if(currentSum === target){
+				return [i, j - 1];
+			}
+			if(currentSum > target){
+				break;
+			}
+			currentSum += arr[j];
+		}
+	}
+	return "No subarray found."
+}
+
+// Time complexity: O(N)
+function findSubArray(arr, sum){
+	let currentSum = 0, start = 0;
+	for(let i = 0; i <= arr.length; i++){
+		while(currentSum > sum){
+			currentSum -= arr[start];
+			start++;
+		}
+		if(currentSum === sum){
+			return [start, i - 1];
+		}
+		if(i < arr.length){
+			currentSum += arr[i];
+		}
+	}
+	return "No subarray is found with sum equals to " + sum;
+}
+[3, 10, 6], 6
+
+
 
 
 

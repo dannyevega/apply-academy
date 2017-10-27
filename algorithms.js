@@ -1476,7 +1476,7 @@ function twoSum(arr, target){
 		let current = arr[i];
 		let difference = target - current;
 		if(map[difference] === undefined){
-			map[nums[i]] = i;
+			map[arr[i]] = i;
 			continue;
 		}
 		return [map[difference], i];
@@ -1522,17 +1522,78 @@ var fibonacci = (function(){
 
 
 
+// Given a string s, find and return the first instance of a non-repeating character in it. If there is no such character, return '_'.
+
+// For s = "abacabad", the output should be -- firstNotRepeatingCharacter(s) = 'c'
+// For s = "abacabaabacaba", the output should be -- firstNotRepeatingCharacter(s) = '_'
+function firstNotRepeatingCharacter(str){
+	var map = {};
+	for(let i = 0; i < str.length; i++){
+		if(map[str[i]]){
+			map[str[i]]++;
+		} else {
+			map[str[i]] = 1;
+		}
+	}
+	for(let key in map){
+		if(map[key] === 1){
+			return key;
+		}
+	}
+	return '_';
+}
+
+function firstNotRepeatingCharacter(str){
+	var map = {};
+	for(let i = 0; i < str.length; i++){
+		if(map[str[i]]){
+			map[str[i]]++;
+		} else {
+			map[str[i]] = 1;
+		}
+	}
+	for(var j = 0; j < str.length; j++){
+		if(map[str[j]] === 1){
+			return str.charAt(j);
+		}
+	}
+	return '_';
+}
 
 
 
+// Given an array a that contains only numbers in the range from 1 to a.length, find the first duplicate number for which the second occurrence has the minimal index. In other words, if there are more than 1 duplicated numbers, return the number for which the second occurrence has a smaller index than the second occurrence of the other number does. If there are no such elements, return -1
+
+// For a = [2, 3, 3, 1, 5, 2], the output should be -- firstDuplicate(a) = 3
+// For a = [2, 4, 3, 5, 1], the output should be -- firstDuplicate(a) = -1
+function firstDuplicat(arr){
+	var map = {};
+	for(var i = 0; i < arr.length; i++){
+		if(map[arr[i]] === undefined){
+			map[arr[i]] = i;
+		} else {
+			return arr[i];
+		}
+	}
+	return -1;
+}
+a = [2, 3, 3, 1, 5, 2]
 
 
 
+// Extract the middle character(s) of each string. If the string is even in length, return the two middle characters. If its odd in length, just return the middle character
 
-
-
-
-
+// For s = "testing" output --> "t"
+// For s = "test" output --> "es"
+// For s = "middle" output --> "dd"
+// For s = "A" output --> "A"
+function getMiddle(str){
+	if(str.length % 2 === 0){
+		let even = str.length / 2;
+		return str.slice(even - 1, even + 1);
+	}
+	return str.charAt(str.length / 2);
+}
 
 
 
