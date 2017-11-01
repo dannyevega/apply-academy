@@ -1594,13 +1594,13 @@ function getMiddle(str){
 
 
 // You are given an n x n 2D matrix that represents an image. Rotate the image by 90 degrees (clockwise).
-
-/*a = [[1, 2, 3],
+/*a =
+	 [[1, 2, 3],
      [4, 5, 6],
      [7, 8, 9]]
 
 rotateImage(a) =
-    [[7, 4, 1],
+     [[7, 4, 1],
      [8, 5, 2],
      [9, 6, 3]]*/
 
@@ -1608,15 +1608,35 @@ function rotateImage(arr){
 	var result = [];
 	for(var i = arr.length - 1, outter = 0; i >= 0; i--, outter++){
 		result[outter] = [];
-		for(var j = 0, inner = arr.length - 1; j++, inner--){
+		for(var j = 0, inner = arr.length - 1; j < arr.length; j++, inner--){
 			result[outter][j] = arr[inner][outter];
 		}
 	}
 	return result;
 }
+i = 2, o = 0
+j = 0, i = 2
 
 
 
+// Now, do it counter clockwise
+/*rotateImageCounter(a) =
+    [[3, 6, 9],
+     [2, 5, 8],
+     [1, 4, 7]]*/
+
+function rotateImageCounter(arr){
+	var result = [];
+	for(var i = 0, outter = arr.length - 1; i < arr.length; i++, outter--){
+		result[i] = []
+		for(var j = 0; j < arr.length; j++){
+			result[i][j] = arr[j][outter];
+		}
+	}
+	return result;
+}
+i = 0, o = 2
+j = 2, i = 0
 
 
 
