@@ -1635,10 +1635,5 @@ function rotateImageCounter(arr){
 	}
 	return result;
 }
-i = 0, o = 2
-j = 2, i = 0
-
-
-
 
 

@@ -25,7 +25,7 @@ function bubbleSort(array){
 	}
 	return array;
 }
-bubbleSort([7,5,2,4,3,9]);
+
 
 // Bubble Sort sucks but both of these solutions below are a bit more optimized. If we already have a sorted algorithm, we can pass a 'changed' variable to check whether or not any elements were swapped in the iniital pass. If they weren't swapped, we know the array is sorted and we can return the array -- no need to continue looping. We can also decrement the amount of the array we have left to check because if we swap during any pass, we know the largest number will be at the end, then the second to the last, third to last etc. there's no need to loop through the end when the last elements will always be larger
 function bubbleSort(arr){
@@ -258,6 +258,7 @@ function merge(arr1, arr2){
 	}
 	return result.concat(arr1.slice(leftCount).concat(arr2.slice(rightCount)));
 }
+mergeSort([3,27,38,43,9, 10, 82]);
 
 // Iterative solution
 function mergeSortIterative(arr){
