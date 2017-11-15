@@ -1461,11 +1461,6 @@ function twoSum(nums, target){
 
 
 
-
-
-
-
-
 function twoSum(arr, target){
 	let map = {};
 	for(let i = 0; i < arr.length; i++){
@@ -1562,7 +1557,7 @@ function firstNotRepeatingCharacter(str){
 
 // For a = [2, 3, 3, 1, 5, 2], the output should be -- firstDuplicate(a) = 3
 // For a = [2, 4, 3, 5, 1], the output should be -- firstDuplicate(a) = -1
-function firstDuplicat(arr){
+function firstDuplicate(arr){
 	var map = {};
 	for(var i = 0; i < arr.length; i++){
 		if(map[arr[i]] === undefined){
@@ -1637,3 +1632,180 @@ function rotateImageCounter(arr){
 }
 
 
+
+function binarySearch(list, item){
+	let middle;
+	function helper(start, end){
+		if(start > end){
+			return -1;
+		} else {
+			middle = Math.floor((start + end) / 2);
+			if(item === list[middle]){
+				return middle;
+			} else if (item < list[middle]){
+				return helper(start, middle - 1);
+			} else {
+				return helper(middle + 1, end);
+			}
+		}
+	}
+	return helper(0, list.length - 1);
+}
+
+
+
+function isPal(word){
+	function helper(firstIndex, lastIndex){
+		if(lastIndex < firstIndex){
+			return true;
+		} else {
+			if(word[firstIndex] === word[lastIndex]){
+				return helper(firstIndex + 1, lastIndex - 1);
+			} else {
+				return false;
+			}
+		}
+	}
+	return helper(0, word.length - 1);
+}
+
+var arr = ["bob", "cat", "dad", "ob"];
+
+function allPalsPapi(arr){
+	var result = [];
+	for(var i = 0; i < arr.length; i++){
+		for(var j = i + 1; j < arr.length; j++){
+			var current = arr[i] + arr[j];
+			if(isPal(current)){
+				result.push(i, j);
+			}
+		}
+	}
+	return result;
+}
+
+
+
+// COMMON PATTERNS -- KNOW THESE !
+
+// finding if duplicates exist in an array -- just need to check if one duplicate exists in array then you can break out
+function containsDuplicates(a) {
+	var map = {};
+	for(var i = 0; i < a.length; i++){
+		if(map[a[i]]){
+			return true;
+		} else {
+			map[a[i]] = true;
+		}
+	}
+	return false;
+}
+
+// two sum function but with two arrays instead of one
+function sumOfTwo(a, b, v) {
+	var map = {};
+	for(var i = 0; i < a.length; i++){
+		var difference = v - a[i];
+		map[difference] = true;
+	}
+	for(var j = 0; j < b.length; j++){
+		if(map[b[j]]){
+			return true;
+		}
+	}
+	return false;
+}
+
+// add up all the sums within the given range O(n^2)
+// nums = [3, 0, -2, 6, -3, 2], queries = [[0,2], [2,5], [0,5]]
+// [0,2] sum in range --> 1
+// [2,5] sum in range --> 3
+// [0,5] sum in range --> 6
+// expected output: 7 --> 1 + 3 + 6
+function sumInRange(nums, queries) {
+    var count = 0;
+    for(var i = 0; i < queries.length; i++){
+        var currentQuery = queries[i];
+        for(var j = currentQuery[0]; j <= currentQuery[1]; j++){
+            count += nums[j];
+        }
+    }
+    return count;
+}
+
+// using prefix sum here to keep track of running total of each element so all you have to do is find the difference with the queries you have available -- better run time than above solution O(nm)
+function sumInRange(nums, queries) {
+	var sum = 0, prefix = [sum], sumInRange = 0;
+	for(var i = 0; i < nums.length; i++){
+		sum += nums[i];
+		prefix[i + 1] = sum;
+	}
+	for(var j = 0; j < queries.length; j++){
+		var currentQuery = queries[j];
+		sumInRange += (prefix[queries[j][1] + 1] - prefix[queries[j][0]]);
+	}
+	return sumInRange;
+}
+
+// using a common technique to count all positive numbers in an array
+// [-2, 2, 5, -11, 6] --> 7
+// idea behind algorithm:
+	// look for all positive contiguous segments of the array (maxAtPosition is used for this)
+	// keep track of maximum sum of contiguous segment among all positive segments (max is used for this)
+	// each time we get a positive sum, compare it with maxAtPosition and update max if it is greater than maxAtPosition
+function arrayMaxConsecutiveSum2(inputArray) {
+	var max = 0, maxAtPosition = 0;
+	for(var i = 0; i < inputArray.length; i++){
+		maxAtPosition += inputArray[i];
+		if(maxAtPosition < 0){
+			maxAtPosition = 0;
+		}
+		if(max < maxAtPosition){
+			max = maxAtPosition;
+		}
+	}
+	return max;
+}
+// example walkthrough:
+// [-2, 2, 5, -11, 6]
+// max = 0, maxAtPosition = 0
+
+// for i=0, a[0] = -2
+// maxAtPosition += (-2)
+// Set maxAtPosition = 0 because maxAtPosition < 0
+
+// for i=1, a[1] = 2
+// maxAtPosition += (2)
+// maxAtPosition = 2
+// max is updated to 4 because maxAtPosition is greater than max which was 0 til now
+
+// for i=2, a[2] = 5
+// maxAtPosition += (5)
+// maxAtPosition = 7
+// max is updated to 7 because maxAtPosition is greater than max
+
+// for i=3, a[1] = -11
+// maxAtPosition += (-11)
+// Set maxAtPosition = 0 because maxAtPosition < 0
+
+// for i=4, a[4] = 6
+// maxAtPosition += (6)
+
+// return max which is 7
+
+// this implementation handles negatives and positive numbers in the case the array is all negative numbers
+[-2, 2, 5, -11, 6]
+function arrayMaxConsecutiveSum2(inputArray) {
+	var currentMax = inputArray[0], maxAtPosition = inputArray[0];
+	for(var i = 1; i < inputArray.length; i++){
+		currentMax = Math.max(inputArray[i], currentMax + inputArray[i]);
+		maxAtPosition = Math.max(currentMax, maxAtPosition);
+	}
+	return maxAtPosition;
+}
+
+0 -- max = -2, maxAtPosition = -2
+1 -- max = 2, maxAtPosition = 2
+2 -- max = 7, maxAtPosition = 7
+3 -- max = -4, maxAtPosition = 7
+4 -- max = 6, maxAtPosition = 7

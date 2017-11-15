@@ -228,28 +228,3 @@ function findSubArray(arr, sum){
 	return "No subarray is found with sum equals to " + sum;
 }
 [3, 10, 6], 6
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
