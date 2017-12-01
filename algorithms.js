@@ -1809,3 +1809,32 @@ function arrayMaxConsecutiveSum2(inputArray) {
 2 -- max = 7, maxAtPosition = 7
 3 -- max = -4, maxAtPosition = 7
 4 -- max = 6, maxAtPosition = 7
+
+
+var fibonacci = [0, 1, 1, 2, 3, 5, 8, 13];
+
+function fibs(n){
+	var fibonacci = [0, 1];
+	if(n === 0){ return []; }
+	if(n === 1){ return [0]; }
+	while(fibonacci.length < n){
+		fibonacci.push(fibonacci[fibonacci.length - 2] + fibonacci[fibonacci.length - 1])
+	}
+	return fibonacci;
+}
+
+function fibsRecursive(n){
+	var fibonacci = [0, 1];
+	if(n === 0) { return []; }
+	function helper(idx){
+		if(idx > n){
+			return;
+		} else {
+			fibonacci[idx] = fibonacci[idx - 2] + fibonacci[idx - 1];
+			helper(idx + 1);
+		}
+	}
+	helper(2);
+	fibonacci.splice(fibonacci.length - 1);
+	return fibonacci;
+}
