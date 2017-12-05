@@ -1872,3 +1872,59 @@ function pairSum(arr, target){
 	}
 	return uniquePairs;
 }
+
+// various twoSums solutions:
+// twoSum -- assume only two numbers add up to sum
+function twoSum(arr, sum){
+	var map = {};
+	for(var i = 0; i < arr.length; i++){
+		var current = arr[i];
+		var difference = sum - current;
+		if(map[difference] === undefined){
+			map[current] = i;
+			continue;
+		}
+		return [map[difference], i];
+	}
+}
+arr = [1,2,4,7,13]
+console.log(twoSum(arr, 9))
+
+// twoSum -- return all indcies of pairs found in array that add up to sum
+function twoSum(arr, sum){
+	var map = {}, result = [];
+	for(var i = 0; i < arr.length; i++){
+		var current = arr[i];
+		var difference = sum - current;
+		if(map[difference] !== undefined){
+			result.push([current, difference]);
+		}
+		map[current] = true;
+	}
+	return result;
+}
+arr = [1, 2, -1, -1, -2]
+console.log(twoSum(arr, 0))
+
+ // twoSum -- return only unique indices of pairs
+function twoSum(arr, sum){
+	var map = {}, result = [], unique = {}, pairs = [];
+	for(var i = 0; i < arr.length; i++){
+		var current = arr[i];
+		var difference = sum - current;
+		if(map[difference] !== undefined){
+			result.push([current, difference]);
+		}
+		map[current] = true;
+	}
+	for(var j = 0; j < result.length; j++){
+		var key = result[j];
+		if(map[key] === undefined){
+			pairs.push(key);
+			map[key] = key;
+		}
+	}
+	return pairs;
+}
+arr = [1, 2, -1, -1, -2]
+console.log(twoSum(arr, 0))
