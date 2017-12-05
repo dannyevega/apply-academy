@@ -1838,3 +1838,37 @@ function fibsRecursive(n){
 	fibonacci.splice(fibonacci.length - 1);
 	return fibonacci;
 }
+
+
+
+// Return all unique pairs in an array that add up to passed in target
+pairSum([1, 2, -1], 0) // = [ [-1, 1] ]
+pairSum([1, 2, -1, -1], 0) // = [ [-1, 1] ]
+pairSum([1, 2, -1, -1, -2], 0) // = [ [-1, 1], [-2, 2] ]
+pairSum([1, 2, -1, -1, -2], 1) // = [ [-1, 2] ]
+pairSum([1, 2, -1, -1, -2], -1) // = [ [-2, 1] ]
+
+function pairSum(arr, target){
+	// map to hold unique keys from array
+	// result array to hold all pairs that add up to target
+	var map = {}, result = [];
+	for(var i = 0; i < arr.length; i++){
+		var current = arr[i];
+		var difference = target - current;
+		if(map[difference] !== undefined){
+			result.push([current, difference])
+		}
+		map[current] = true;
+	}
+	// uniqueMap to hold all unique pairs found in result array
+	// uniquePairs array to hold ONLY unique pairs
+	var uniqueMap = {}, uniquePairs = [];
+	for(var j = 0; j < result.length; j++){
+		var key = result[j];
+		if(uniqueMap[key] === undefined){
+			uniquePairs.push(result[j]);
+			uniqueMap[key] = "found";
+		}
+	}
+	return uniquePairs;
+}
