@@ -1874,57 +1874,105 @@ function pairSum(arr, target){
 }
 
 // various twoSums solutions:
-// twoSum -- assume only two numbers add up to sum
-function twoSum(arr, sum){
-	var map = {};
-	for(var i = 0; i < arr.length; i++){
-		var current = arr[i];
-		var difference = sum - current;
-		if(map[difference] === undefined){
-			map[current] = i;
-			continue;
-		}
-		return [map[difference], i];
-	}
-}
-arr = [1,2,4,7,13]
-console.log(twoSum(arr, 9))
-
-// twoSum -- return all indcies of pairs found in array that add up to sum
-function twoSum(arr, sum){
-	var map = {}, result = [];
-	for(var i = 0; i < arr.length; i++){
-		var current = arr[i];
-		var difference = sum - current;
-		if(map[difference] !== undefined){
-			result.push([current, difference]);
+// twoSum - returns all pairs
+function twoSum(nums, target){
+	var map = {}, pairs = [];
+	for(var i = 0; i < nums.length; i++){
+		var current = nums[i];
+		var difference = target - current;
+		if(map[difference]){
+			pairs.push([current, difference]);
 		}
 		map[current] = true;
-	}
-	return result;
-}
-arr = [1, 2, -1, -1, -2]
-console.log(twoSum(arr, 0))
-
- // twoSum -- return only unique indices of pairs
-function twoSum(arr, sum){
-	var map = {}, result = [], unique = {}, pairs = [];
-	for(var i = 0; i < arr.length; i++){
-		var current = arr[i];
-		var difference = sum - current;
-		if(map[difference] !== undefined){
-			result.push([current, difference]);
-		}
-		map[current] = true;
-	}
-	for(var j = 0; j < result.length; j++){
-		var key = result[j];
-		if(map[key] === undefined){
-			pairs.push(key);
-			map[key] = key;
-		}
 	}
 	return pairs;
 }
-arr = [1, 2, -1, -1, -2]
+twoSum([1, 6, 4, 5, 3, 3], 7);
+
+// twoSum - returns only unique pairs
+function twoSum(nums, target){
+	var map = {}, unique = {}, pairs = [];
+	for(var i = 0; i < nums.length; i++){
+		var current = nums[i];
+		var difference = target - current;
+		if(map[difference] !== undefined){
+			if(unique[difference] === undefined){
+				pairs.push([current, difference]);
+			}
+			unique[difference] = true;
+		}
+		map[current] = true;
+	}
+	return pairs;
+}
+
+// twoSum - returns indices where target is found -- asuming only one pair found in list, not ALL pairs
+function twoSum(nums, target){
+	var map = {};
+	for(var i = 0; i < nums.length; i++){
+		var current = nums[i];
+		var difference = target - current;
+		if(map[difference] !== undefined){
+			return [map[difference], i];
+		}
+		map[current] = i;
+	}
+	return false;
+}
 console.log(twoSum(arr, 0))
+
+
+
+// convert an integer to its roman numeral
+function romanToInteger(numeral){
+    var roman = ["M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I"];
+    var integers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    var result = 0;
+    for(var i = 0; i < roman.length; i++){
+        var current = roman[i];
+        while(numeral.indexOf(current) === 0){
+            result += integers[i];
+            str = str.replace(current, "");
+        }
+    }
+    return result;
+}
+console.log(romanToInteger("MCMLXXXIX"));
+
+// convert a roman numeral to integer
+function integerToRoman(num){
+    var roman = ["M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I"];
+    var integers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    var result = "";
+    for(var i = 0; i < integers.length; i++){
+        var current = integers[i];
+        while(num % current < num){
+            result += roman[i];
+            num -= current;
+        }
+    }
+    return result;
+}
+console.log(toRoman(1989));
+
+
+
+// threeSum -- return the indices where 3 elements add up to target
+function threeSum(arr, target){
+    var hash = {}, result = [];
+    for(var i = 0; i < arr.length; i++){
+        var currOutter = arr[i];
+        for(var j = i + 1; j < arr.length; j++){
+            var currInner = arr[j];
+            var difference = target - (currOutter + currInner);
+            if(hash[difference] !== undefined){
+                result.push(hash[difference], i, j);
+                return;
+            }
+            if(hash[currOutter] === undefined){
+                hash[currOutter] = i;
+            }
+        }
+    }
+    return result;
+}
