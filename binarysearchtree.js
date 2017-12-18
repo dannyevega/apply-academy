@@ -87,39 +87,6 @@ bst.add(8)
 bst.add(1)
 bst.add(9)
 
-BST.prototype.remove = function(data){
-	let removeNode = function(node, data){
-		if(node === null){
-			return null;
-		}
-		if(data === node.data){
-			if(node.left === null && node.right === null){
-				return null;
-			} else if(node.left === null){
-				return node.right;
-			} else if(node.right === null){
-				return node.left;
-			} else {
-				let temp = node.right;
-				while(temp.left !== null){
-					temp = temp.left;
-				}
-				node.data = temp.data;
-				node.right = removeNode(node.right, data);
-				return node;
-			}
-		} else if(data < node.data){
-			node.left = removeNode(node.left, data);
-			return node;
-		} else {
-			node.right = removeNode(node.right, data);
-			return node;
-		}
-	}
-	removeNode(this.root, data);
-}
-
-
 
 
 
